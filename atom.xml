@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yangpenghe.ml</id>
     <title>杨鹏赫Blog</title>
-    <updated>2021-06-12T11:11:48.457Z</updated>
+    <updated>2021-06-12T11:37:35.146Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yangpenghe.ml"/>
     <link rel="self" href="https://yangpenghe.ml/atom.xml"/>
@@ -745,7 +745,7 @@ fun = lambda x, i: x[i+1:8] + rec(x[8:], i-1)
 <p><code>chr()</code>：接受一个参数，参数为 int 值，返回 Unicode 码点为这个 int 值的字符。</p>
 <h2 id="测试效果">测试效果</h2>
 <p>获取图片</p>
-<pre><code class="language-sh">$ wget http://yangchendong.ml/files/Python3Steganography/coffee.png  
+<pre><code class="language-sh">$ wget http://yangpenghe.ml/post-images/python3-tu-pian-yin-xie-zhu.png
 </code></pre>
 <p>在我们的代码后添加这两行：</p>
 <pre><code class="language-python">encodeDataInImage(Image.open(&quot;coffee.png&quot;), '你好世界，Hello world!').save('encodeImage.png')
@@ -756,9 +756,6 @@ print(decodeImage(Image.open(&quot;encodeImage.png&quot;)))
 </code></pre>
 <p>它应该打印出 &quot;你好世界，Hello world!&quot;。</p>
 <h1 id="完整代码">完整代码</h1>
-<p>使用下面的命令可以下载源代码：</p>
-<pre><code class="language-shell">$ wget http://yangchendong.ml/files/Python3Steganography/steganography.py
-</code></pre>
 <pre><code class="language-python">from PIL import Image
 
 &quot;&quot;&quot;

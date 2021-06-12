@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>怎么看Windows 10 是不是永久激活? | 杨鹏赫Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1623496237762">
+<link rel="shortcut icon" href="/favicon.ico?v=1623497828158">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1629,7 +1629,7 @@ fun = lambda x, i: x[i+1:8] + rec(x[8:], i-1)
 &lt;p&gt;&lt;code&gt;chr()&lt;/code&gt;：接受一个参数，参数为 int 值，返回 Unicode 码点为这个 int 值的字符。&lt;/p&gt;
 &lt;h2 id=&#34;测试效果&#34;&gt;测试效果&lt;/h2&gt;
 &lt;p&gt;获取图片&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ wget http://yangchendong.ml/files/Python3Steganography/coffee.png  
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ wget http://yangpenghe.ml/post-images/python3-tu-pian-yin-xie-zhu.png
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;在我们的代码后添加这两行：&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;encodeDataInImage(Image.open(&amp;quot;coffee.png&amp;quot;), &#39;你好世界，Hello world!&#39;).save(&#39;encodeImage.png&#39;)
@@ -1640,9 +1640,6 @@ print(decodeImage(Image.open(&amp;quot;encodeImage.png&amp;quot;)))
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;它应该打印出 &amp;quot;你好世界，Hello world!&amp;quot;。&lt;/p&gt;
 &lt;h1 id=&#34;完整代码&#34;&gt;完整代码&lt;/h1&gt;
-&lt;p&gt;使用下面的命令可以下载源代码：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ wget http://yangchendong.ml/files/Python3Steganography/steganography.py
-&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from PIL import Image
 
 &amp;quot;&amp;quot;&amp;quot;
