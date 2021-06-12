@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>杨鹏赫Blog</title>
+<title>Python3 图片隐写术 | 杨鹏赫Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1623456781978">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -51,6 +51,8 @@
 
 
 
+  <meta name="description" content="Python3 图片隐写术" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -112,7 +114,7 @@
             
               
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/tags/" target="_self">
@@ -196,10 +198,26 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  pisces">
+      class="section-layout pisces ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -240,198 +258,644 @@
   </div>
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#%E5%8E%9F%E7%90%86">原理</a></li>
+<li><a href="#%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0">程序实现</a>
+<ul>
+<li><a href="#%E7%BC%96%E7%A0%81">编码</a></li>
+<li><a href="#%E8%A7%A3%E7%A0%81">解码</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E6%95%88%E6%9E%9C">测试效果</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">完整代码</a></li>
+</ul>
+
+  </div>
 </div>
+
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'pisces';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
       }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
     });
   }
-  </script>
-        <div class="section-box box-shadow-wrapper">
-          <section class="section tags-section bg-color posts-expand">
-            <div class="tags-box">
-  <div class="tag-cloud-title language" data-lan="cloud-tags" data-count="2">
-    目前共计 2 个标签
-  </div>
-  <div class="tag-cloud-list" id="tags">
-    
-      
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-          
-            
-      
-      <a class="cloud-tag" href="https://yangpenghe.ml/tag/war1mJ5Hz/" rel="1">教程</a>
-    
-      
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-          
-        
-          
-            
-      
-      <a class="cloud-tag" href="https://yangpenghe.ml/tag/mkYO9vQOqo/" rel="1">Android</a>
-    
-  </div>
-</div>
-<script>
 
-  let fontStart = 12, fontEnd = 30, colorStart = '#666', colorEnd = '#000';
-  let tags = document.querySelector('#tags').children;
-  let counts = [];
-  for(let i = 0; i < tags.length; i++) {
-    counts.push(tags[i].rel);
-  }
-  let lowest = Math.min.apply(null,counts), highest = Math.max.apply(null,counts);;
-  let range = highest - lowest;
-  if (range === 0) {
-    range = 1;
-  }
-  let fontIncr, colorIncr;
-  fontIncr = (fontEnd - fontStart) / range;
-  
-  let sColorArr = toRGB(colorStart), eColorArr = toRGB(colorEnd);
-
-  for(let i = 0; i < tags.length; i++) {
-    let disCount = tags[i].rel - lowest;
-    let fontSize = fontStart + disCount * fontIncr;
-    let style = 'font-size: ' + fontSize + 'px;';
-    let arr = [];
-    for(let c = 0; c < sColorArr.length; c++) {
-      if (disCount === 0) {
-        disCount = 1;
-      }
-      let val = (sColorArr[c] - eColorArr[c]) / range * disCount;
-      if (val >= 100) {
-        val = eColorArr[c];
-      } else if (val <= 0) {
-        val = sColorArr[c];
-      }
-      arr[c] = Math.floor(val);
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
     }
-    style += 'color: ' + toHex(arr);
-    tags[i].style = style;
   }
 
-  function toRGB(code) {
-    if (code.length === 4) {
-      code = code.replace(/(\w)(\w)(\w)/gi, "\$1\$1\$2\$2\$3\$3");
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
     }
-    var hex = /(\w{2})(\w{2})(\w{2})/.exec(code);
-    return [parseInt(hex[1], 16), parseInt(hex[2], 16), parseInt(hex[3], 16)];
   }
 
-  function toHex(ary) {
-    return "#" + ((1 << 24) + (ary[0] << 16) + (ary[1] << 8) + ary[2]).toString(16).slice(1);
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
   }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
 
 </script>
-          </section>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    jQuery.Velocity(hideElement, 'stop');
+    jQuery.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        jQuery.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://yangpenghe.ml/post/python3-tu-pian-yin-xie-zhu/">
+      Python3 图片隐写术
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2021-06-12 08:10:18">2021-06-12</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>14<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>3159<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</section>
+            <div class="post-body next-md-body" id="post_body">
+              <blockquote>
+<p><strong>隐写术</strong>是一门关于信息隐藏的技巧与科学，所谓信息隐藏指的是不让除预期的接收者之外的任何人知晓信息的传递事件或者信息的内容。隐写术的英文叫做Steganography，来源于<a href="https://zh.wikipedia.org/wiki/%E7%BA%A6%E7%BF%B0%E5%B0%BC%E6%96%AF%C2%B7%E7%89%B9%E9%87%8C%E7%89%B9%E7%B1%B3%E4%B9%8C%E6%96%AF">特里特米乌斯</a>的一本讲述<a href="https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A2%BC%E5%AD%B8">密码学</a>与隐写术的著作<em>Steganographia</em>，该书书名源于<a href="https://zh.wikipedia.org/wiki/%E5%B8%8C%E8%87%98%E8%AA%9E">希腊语</a>，意为“隐秘书写”。</p>
+</blockquote>
+<!--more-->
+<h1 id="原理">原理</h1>
+<blockquote>
+<p>载体文件（cover file）相对隐秘文件的大小（指数据含量，以比特计）越大，隐藏后者就越加容易。<br>
+因为这个原因，数字图像（包含有大量的数据）在因特网和其他传媒上被广泛用于隐藏消息。这种方法使用的广泛程度无从查考。例如：一个24位的位图中的每个像素的三个颜色分量（红，绿和蓝）各使用8个比特来表示。如果我们只考虑蓝色的话，就是说有2^8种不同的数值来表示深浅不同的蓝色。而像11111111和11111110这两个值所表示的蓝色，人眼几乎无法区分。因此，这个最低有效位就可以用来存储颜色之外的信息，而且在某种程度上几乎是检测不到的。如果对红色和绿色进行同样的操作，就可以在差不多三个像素中存储一个字节的信息。<br>
+更正式一点地说，使隐写的信息难以探测的，也就是保证“有效载荷”（需要被隐蔽的信号）对“载体”（即原始的信号）的调制对载体的影响看起来（理想状况下甚至在统计上）可以忽略。这就是说，这种改变应该无法与载体中的噪声加以区别。<br>
+（从信息论的观点来看，这就是说信道的容量必须大于传输“表面上”的信号的需求。这就叫做信道的冗余。对于一幅数字图像，这种冗余可能是成像单元的噪声；对于数字音频，可能是录音或者放大设备所产生的噪声。任何有着模拟放大级的系统都会有所谓的热噪声（或称“1/f”噪声)，这可以用作掩饰。另外，有损压缩技术（如JPEG）会在解压后的数据中引入一些误差，利用这些误差作隐写术用途也是可能的。）<br>
+隐写术也可以用作数字水印，这里一条消息（往往只是一个标识符）被隐藏到一幅图像中，使得其来源能够被跟踪或校验。</p>
+</blockquote>
+<p>总而言之，本实验便是利用图片四个颜色分量（rgba）的最低有效位（英语：Least Significant Bit，lsb）来隐藏信息（本实验隐藏的是文字）</p>
+<h1 id="程序实现">程序实现</h1>
+<p>先安装 Pillow：</p>
+<pre><code class="language-sh">$ sudo pip3 install Pillow
+</code></pre>
+<p>导入 Pillow 模块：</p>
+<pre><code class="language-python">from PIL import Image
+</code></pre>
+<h2 id="编码">编码</h2>
+<p>我们首先设计将隐藏信息编码到图片中的函数 <code>encodeDataInImage()</code>，其有两个参数，分别是用作载体的图片对象和需要被隐藏的字符串。也就是说我们可以这样调用它：</p>
+<pre><code class="language-python">encodeDataInImage(Image.open(&quot;steganographia.png&quot;), '你好世界，Hello world!')
+</code></pre>
+<p><code>encodeDataInImage()</code> 函数如下：</p>
+<pre><code class="language-python">def encodeDataInImage(image, data):
+    evenImage = makeImageEven(image)  # 获得最低有效位为 0 的图片副本
+    binary = ''.join(map(constLenBin,bytearray(data, 'utf-8'))) # 将需要被隐藏的字符串转换成二进制字符串
+    if len(binary) &gt; len(image.getdata()) * 4:  # 如果不可能编码全部数据， 抛出异常
+        raise Exception(&quot;Error: Can't encode more than &quot; + len(evenImage.getdata()) * 4 + &quot; bits in this image. &quot;)
+    encodedPixels = [(r+int(binary[index*4+0]),g+int(binary[index*4+1]),b+int(binary[index*4+2]),t+int(binary[index*4+3])) if index*4 &lt; len(binary) else (r,g,b,t) for index,(r,g,b,t) in enumerate(list(evenImage.getdata()))] # 将 binary 中的二进制字符串信息编码进像素里
+    encodedImage = Image.new(evenImage.mode, evenImage.size)  # 创建新图片以存放编码后的像素
+    encodedImage.putdata(encodedPixels)  # 添加编码后的数据
+    return encodedImage
+</code></pre>
+<p><code>makeImageEven()</code> 函数的实现如下：</p>
+<pre><code class="language-python">def makeImageEven(image):
+    pixels = list(image.getdata())  # 得到一个这样的列表： [(r,g,b,t),(r,g,b,t)...]
+    evenPixels = [(r&gt;&gt;1&lt;&lt;1,g&gt;&gt;1&lt;&lt;1,b&gt;&gt;1&lt;&lt;1,t&gt;&gt;1&lt;&lt;1) for [r,g,b,t] in pixels]  # 更改所有值为偶数（魔法般的移位）
+    evenImage = Image.new(image.mode, image.size)  # 创建一个相同大小的图片副本
+    evenImage.putdata(evenPixels)  # 把上面的像素放入到图片副本
+    return evenImage
+</code></pre>
+<p><code>encodeDataInImage()</code> 中，<code>bytearray()</code> 将字符串转换为整数值序列（数字范围是 0 到 2^8-1），数值序列由字符串的字节数据转换而来，utf-8 编码的中文字符一个就占了3个字节，那么四个字符共占 3×4=12 个字节，于是共有12个数字。然后 <code>map(constLenBin,bytearray(data, 'utf-8'))</code> 对数值序列中的每一个值应用 <code>constLenBin()</code> 函数，将十进制数值序列转换为二进制字符串序列。</p>
+<pre><code class="language-python">def constLenBin(int):
+    binary = &quot;0&quot;*(8-(len(bin(int))-2))+bin(int).replace('0b','')  # 去掉 bin() 返回的二进制字符串中的 '0b'，并在左边补足 '0' 直到字符串长度为 8
+    return binary
+</code></pre>
+<p>在这里 <code>bin()</code> 的作用是将一个 int 值转换为二进制字符串，详见： <a href="https://docs.python.org/3/library/functions.html#bin">https://docs.python.org/3/library/functions.html#bin</a></p>
+<h2 id="解码">解码</h2>
+<p><code>decodeImage()</code> 返回图片解码后的隐藏文字，其接受一个图片对象参数。</p>
+<pre><code>def decodeImage(image):
+    pixels = list(image.getdata())  # 获得像素列表
+    binary = ''.join([str(int(r&gt;&gt;1&lt;&lt;1!=r))+str(int(g&gt;&gt;1&lt;&lt;1!=g))+str(int(b&gt;&gt;1&lt;&lt;1!=b))+str(int(t&gt;&gt;1&lt;&lt;1!=t)) for (r,g,b,t) in pixels])  # 提取图片中所有最低有效位中的数据
+    # 找到数据截止处的索引
+    locationDoubleNull = binary.find('0000000000000000')
+    endIndex = locationDoubleNull+(8-(locationDoubleNull % 8)) if locationDoubleNull%8 != 0 else locationDoubleNull
+    data = binaryToString(binary[0:endIndex])
+    return data
+
+</code></pre>
+<blockquote>
+<p><a href="https://docs.python.org/3/library/stdtypes.html#str.find">str.find()</a></p>
+</blockquote>
+<p>找到数据截止处所用的字符串 <code>'0000000000000000'</code> 很有意思，他的长度为16，而不是直觉上的 8，因为两个包含数据的字节的接触部分可能有 8 个 0。</p>
+<p><code>binaryToString()</code> 函数将提取出来的二进制字符串转换为隐藏的文本：</p>
+<pre><code>def binaryToString(binary):
+    index = 0
+    string = []
+    rec = lambda x, i: x[2:8] + (rec(x[8:], i-1) if i &gt; 1 else '') if x else ''
+    # rec = lambda x, i: x and (x[2:8] + (i &gt; 1 and rec(x[8:], i-1) or '')) or ''
+    fun = lambda x, i: x[i+1:8] + rec(x[8:], i-1)
+    while index + 1 &lt; len(binary):
+        chartype = binary[index:].index('0')
+        length = chartype*8 if chartype else 8
+        string.append(chr(int(fun(binary[index:index+length],chartype),2)))
+        index += length
+    return ''.join(string)
+
+</code></pre>
+<p>要看明白这个，必须要先搞懂 UTF-8 编码的方式，可以在 wikipedia 上了解 UTF-8 编码：<a href="https://zh.wikipedia.org/wiki/UTF-8">https://zh.wikipedia.org/wiki/UTF-8</a></p>
+<p>UTF-8 是 UNICODE的一种变长度的编码表达方式，也就是说一个字符串中，不同的字符所占的字节数不一定相同，这就给我们的工作带来了一点复杂度，如果我们要支持中文的话（那不是废话么）。</p>
+<table>
+<thead>
+<tr>
+<th>码点的位数</th>
+<th>码点起值</th>
+<th>码点终值</th>
+<th>字节序列</th>
+<th>Byte 1</th>
+<th>Byte 2</th>
+<th>Byte 3</th>
+<th>Byte 4</th>
+<th>Byte 5</th>
+<th>Byte 6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>U+0000</td>
+<td>U+007F</td>
+<td>1</td>
+<td><code>0xxxxxxx</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>U+0080</td>
+<td>U+07FF</td>
+<td>2</td>
+<td><code>110xxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>U+0800</td>
+<td>U+FFFF</td>
+<td>3</td>
+<td><code>1110xxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>21</td>
+<td>U+10000</td>
+<td>U+1FFFFF</td>
+<td>4</td>
+<td><code>11110xxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>26</td>
+<td>U+200000</td>
+<td>U+3FFFFFF</td>
+<td>5</td>
+<td><code>111110xx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td></td>
+</tr>
+<tr>
+<td>31</td>
+<td>U+4000000</td>
+<td>U+7FFFFFFF</td>
+<td>6</td>
+<td><code>1111110x</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+</tr>
+</tbody>
+</table>
+<p>在上图中，只有 <code>x</code> 所在的位置（也即是字节中第一个 0 之后的数据）存储的是真正的字符数据，因此我们使用下面两个匿名函数来提取出这些数据：</p>
+<pre><code>rec = lambda x, i: x[2:8] + (rec(x[8:], i-1) if i &gt; 1 else '') if x else ''
+fun = lambda x, i: x[i+1:8] + rec(x[8:], i-1)
+
+</code></pre>
+<p><code>fun()</code> 接受 2 个参数，第一个参数为表示一个字符的二进制字符串，这个二进制字符串可能有不同的长度（8、16、24...48）；第二个参数为这个字符占多少个字节。</p>
+<p><code>lambda x, i: x[i+1:8] + rec(x[8:], i-1)</code> 中 <code>x[i+1:8]</code> 获得第一个字节的数据，然后调用 rec()，以递归的方提取后面字节中的数据。</p>
+<p>这里要提一句，<code>rec = lambda x, i: x[2:8] + (rec(x[8:], i-1) if i &gt; 1 else '') if x else ''</code>，你可能对在表达式里面引用了 <code>rec</code> 感到不可理解，的确，严格意义上这样是不能实现递归的，但在 python 里这样是可以的，这就是 python 的语法糖了。</p>
+<p>使用 lambda 表达式写递归从来不是一件简单的事，因为匿名函数引用自身并不简单，大家可以参考一下大牛刘未鹏的博文：<a href="http://blog.csdn.net/pongba/article/details/1336028">http://blog.csdn.net/pongba/article/details/1336028</a></p>
+<p>我们注意到，字符的字节数据中，第一个字节开头 <code>1</code> 的数目便是字符所占的字节数：</p>
+<pre><code>chartype = binary[index:].index('0') # 存放字符所占字节数，一个字节的字符会存为 0
+
+</code></pre>
+<p><code>string.append(chr(int(fun(binary[index:index+length],chartype),2)))</code> 这一行中用到的函数 <code>int()</code> 以及 <code>chr</code> 的作用如下：</p>
+<p><code>int()</code>: 接受两个参数，第一个参数为数字字符串，第二个参数为这个数字字符串代表的数字的进制。详见： <a href="https://docs.python.org/3/library/functions.html#int">https://docs.python.org/3/library/functions.html#int</a></p>
+<p><code>chr()</code>：接受一个参数，参数为 int 值，返回 Unicode 码点为这个 int 值的字符。</p>
+<h2 id="测试效果">测试效果</h2>
+<p>获取图片</p>
+<pre><code class="language-sh">$ wget http://yangchendong.ml/files/Python3Steganography/coffee.png  
+</code></pre>
+<p>在我们的代码后添加这两行：</p>
+<pre><code class="language-python">encodeDataInImage(Image.open(&quot;coffee.png&quot;), '你好世界，Hello world!').save('encodeImage.png')
+print(decodeImage(Image.open(&quot;encodeImage.png&quot;)))
+</code></pre>
+<p>假设你的源代码文件为 steganography.py：</p>
+<pre><code class="language-sh">$ python3 steganography
+</code></pre>
+<p>它应该打印出 &quot;你好世界，Hello world!&quot;。</p>
+<h1 id="完整代码">完整代码</h1>
+<p>使用下面的命令可以下载源代码：</p>
+<pre><code class="language-shell">$ wget http://yangchendong.ml/files/Python3Steganography/steganography.py
+</code></pre>
+<pre><code class="language-python">from PIL import Image
+
+&quot;&quot;&quot;
+取得一个 PIL 图像并且更改所有值为偶数（使最低有效位为 0）
+&quot;&quot;&quot;
+def makeImageEven(image):
+    pixels = list(image.getdata())  # 得到一个这样的列表： [(r,g,b,t),(r,g,b,t)...]
+    evenPixels = [(r&gt;&gt;1&lt;&lt;1,g&gt;&gt;1&lt;&lt;1,b&gt;&gt;1&lt;&lt;1,t&gt;&gt;1&lt;&lt;1) for [r,g,b,t] in pixels]  # 更改所有值为偶数（魔法般的移位）
+    evenImage = Image.new(image.mode, image.size)  # 创建一个相同大小的图片副本
+    evenImage.putdata(evenPixels)  # 把上面的像素放入到图片副本
+    return evenImage
+
+&quot;&quot;&quot;
+内置函数 bin() 的替代，返回固定长度的二进制字符串
+&quot;&quot;&quot;
+def constLenBin(int):
+    binary = &quot;0&quot;*(8-(len(bin(int))-2))+bin(int).replace('0b','')  # 去掉 bin() 返回的二进制字符串中的 '0b'，并在左边补足 '0' 直到字符串长度为 8
+    return binary
+
+&quot;&quot;&quot;
+将字符串编码到图片中
+&quot;&quot;&quot;
+def encodeDataInImage(image, data):
+    evenImage = makeImageEven(image)  # 获得最低有效位为 0 的图片副本
+    binary = ''.join(map(constLenBin,bytearray(data, 'utf-8'))) # 将需要被隐藏的字符串转换成二进制字符串
+    if len(binary) &gt; len(image.getdata()) * 4:  # 如果不可能编码全部数据， 抛出异常
+        raise Exception(&quot;Error: Can't encode more than &quot; + len(evenImage.getdata()) * 4 + &quot; bits in this image. &quot;)
+    encodedPixels = [(r+int(binary[index*4+0]),g+int(binary[index*4+1]),b+int(binary[index*4+2]),t+int(binary[index*4+3])) if index*4 &lt; len(binary) else (r,g,b,t) for index,(r,g,b,t) in enumerate(list(evenImage.getdata()))] # 将 binary 中的二进制字符串信息编码进像素里
+    encodedImage = Image.new(evenImage.mode, evenImage.size)  # 创建新图片以存放编码后的像素
+    encodedImage.putdata(encodedPixels)  # 添加编码后的数据
+    return encodedImage
+
+&quot;&quot;&quot;
+从二进制字符串转为 UTF-8 字符串
+&quot;&quot;&quot;
+def binaryToString(binary):
+    index = 0
+    string = []
+    rec = lambda x, i: x[2:8] + (rec(x[8:], i-1) if i &gt; 1 else '') if x else ''
+    # rec = lambda x, i: x and (x[2:8] + (i &gt; 1 and rec(x[8:], i-1) or '')) or ''
+    fun = lambda x, i: x[i+1:8] + rec(x[8:], i-1)
+    while index + 1 &lt; len(binary):
+        chartype = binary[index:].index('0') # 存放字符所占字节数，一个字节的字符会存为 0
+        length = chartype*8 if chartype else 8
+        string.append(chr(int(fun(binary[index:index+length],chartype),2)))
+        index += length
+    return ''.join(string)
+
+&quot;&quot;&quot;
+解码隐藏数据
+&quot;&quot;&quot;
+def decodeImage(image):
+    pixels = list(image.getdata())  # 获得像素列表
+    binary = ''.join([str(int(r&gt;&gt;1&lt;&lt;1!=r))+str(int(g&gt;&gt;1&lt;&lt;1!=g))+str(int(b&gt;&gt;1&lt;&lt;1!=b))+str(int(t&gt;&gt;1&lt;&lt;1!=t)) for (r,g,b,t) in pixels]) # 提取图片中所有最低有效位中的数据
+    # 找到数据截止处的索引
+    locationDoubleNull = binary.find('0000000000000000')
+    endIndex = locationDoubleNull+(8-(locationDoubleNull % 8)) if locationDoubleNull%8 != 0 else locationDoubleNull
+    data = binaryToString(binary[0:endIndex])
+    return data
+
+encodeDataInImage(Image.open(&quot;coffee.png&quot;), '你好世界，Hello world!').save('encodeImage.png')
+print(decodeImage(Image.open(&quot;encodeImage.png&quot;)))
+</code></pre>
+
+            </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      杨鹏赫
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://yangpenghe.ml/post/python3-tu-pian-yin-xie-zhu/" title="Python3 图片隐写术">https://yangpenghe.ml/post/python3-tu-pian-yin-xie-zhu/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="Python猜拳小游戏的实现!" href="https://yangpenghe.ml/post/python-cai-quan-xiao-you-xi-de-shi-xian/">Python猜拳小游戏的实现!</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="Python猜拳小游戏的实现!" href="https://yangpenghe.ml/post/python-cai-quan-xiao-you-xi-de-shi-xian/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Linux环境jdk安装及配置" href="https://yangpenghe.ml/post/linux-huan-jing-jdk-an-zhuang-ji-pei-zhi/">Linux环境jdk安装及配置</a>
+        <a class="nav-mobile-next" title="Linux环境jdk安装及配置" href="https://yangpenghe.ml/post/linux-huan-jing-jdk-an-zhuang-ji-pei-zhi/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+            
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0fd0c7deebca2b1cf3c5',
+    clientSecret: '4599903a005a5217ad4c624a1ce5c8ee3545fafd',
+    repo: 'PengheYang.Github.io',
+    owner: 'PengheYang',
+    admin: ['PengheYang'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+    
+    
+  
+
+          </div>
         </div>
       </div>
     </div>
@@ -1185,6 +1649,223 @@
     aelem.appendChild(image);
     parent.insertBefore(aelem, next);
   })
+</script>
+
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        jQuery.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        jQuery.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        jQuery.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        jQuery.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      jQuery.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      jQuery.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
 </script>
 
   </div>
@@ -2947,6 +3628,5 @@ adb shell ./data/flash_image recovery /sdcard/recovery.img
   // Using config rendering effect at 'element'.
   const cn = new CanvasNest(document.querySelector('.snow-container'), config);
   </script>
-
 
 </html>

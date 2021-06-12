@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>中文摩斯密码</title>
+  <meta name="keywords" content="morse encode, morse decode, morse unicode" />
+  <meta name="description" content="xmorse is a pure JavaScript library for encoding/decoding morse code messages, unicode supported." />
+  <style type="text/css">
+  body {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  pre {
+    background-color: #f6dcd7;
+    padding: 10px 15px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  pre.strong {
+    font-weight: bold;
+  }
+  form, form textarea {
+    width: 100%;
+  }
+  </style>
+</head>
+<body>	
+  <h1> 中文摩斯密码 </h1>
+  <ol>
+	<li>中文莫斯密码，互联网上唯一一个可以进行中文莫斯密码加密解密的工具。解密的时候注意字符之间的分隔符。</li>
+	<li>标准的摩斯密码并不包含中文字符，本站中文的Morse密码使用国际标准Uncode转换Morse得到。</li>
+	<li>支持中文的 摩斯密码使用了开源库：<a href="https://github.com/hustcc/xmorse" target="_blank"> https://github.com/hustcc/xmorse</a>。</li>
+  </ol>
+
+  <form>
+    <textarea rows='10' id='input'>I love you, 我爱你。</textarea>
+    <br />
+    分隔符: <input type='text' id='space' value='/' placeholder='space' />
+    短信号: <input type='text' id='short' value='.' placeholder='short' />
+    长信号: <input type='text' id='long' value='-' placeholder='long' />
+    <br />
+    <br />
+    <input type='button' onclick='encode()' value='加密摩斯密码' />
+    <input type='button' onclick='decode()' value='解密摩斯密码' />
+  </form>
+  <pre id='result'></pre>
+
+
+  <script type="text/javascript" src="./dist/xmorse.js"></script>
+  <script type="text/javascript">
+    function $_(id) {
+      return document.getElementById(id);
+    }
+    function getoption() {
+      return {
+        space: $_('space').value,
+        short: $_('short').value,
+        long: $_('long').value,
+      };
+    }
+    function encode() {
+      $_('result').innerHTML = xmorse.encode($_('input').value, getoption());
+    }
+    function decode() {
+      $_('result').innerHTML = xmorse.decode($_('input').value, getoption()) || 'Morse code is not valid.';
+    }
+  </script>
+</body>
+</html>

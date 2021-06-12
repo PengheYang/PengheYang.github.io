@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>杨鹏赫Blog</title>
+<title>用了这么多年盗版Windows 不想知道与正版有啥不同吗？ | 杨鹏赫Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1623456781978">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -51,6 +51,8 @@
 
 
 
+  <meta name="description" content="用了这么多年盗版Windows 不想知道与正版有啥不同吗？" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -112,7 +114,7 @@
             
               
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/tags/" target="_self">
@@ -196,10 +198,25 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  pisces">
+      class="section-layout pisces ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -240,198 +257,210 @@
   </div>
 
 </div>
-</div>
-<script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'pisces';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
-      }
-    });
-  }
-  </script>
-        <div class="section-box box-shadow-wrapper">
-          <section class="section tags-section bg-color posts-expand">
-            <div class="tags-box">
-  <div class="tag-cloud-title language" data-lan="cloud-tags" data-count="2">
-    目前共计 2 个标签
-  </div>
-  <div class="tag-cloud-list" id="tags">
-    
-      
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-          
-            
-      
-      <a class="cloud-tag" href="https://yangpenghe.ml/tag/war1mJ5Hz/" rel="1">教程</a>
-    
-      
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
           
         
-          
-            
-      
-      <a class="cloud-tag" href="https://yangpenghe.ml/tag/mkYO9vQOqo/" rel="1">Android</a>
-    
-  </div>
-</div>
-<script>
-
-  let fontStart = 12, fontEnd = 30, colorStart = '#666', colorEnd = '#000';
-  let tags = document.querySelector('#tags').children;
-  let counts = [];
-  for(let i = 0; i < tags.length; i++) {
-    counts.push(tags[i].rel);
-  }
-  let lowest = Math.min.apply(null,counts), highest = Math.max.apply(null,counts);;
-  let range = highest - lowest;
-  if (range === 0) {
-    range = 1;
-  }
-  let fontIncr, colorIncr;
-  fontIncr = (fontEnd - fontStart) / range;
+      </div>
+    </div>
   
-  let sColorArr = toRGB(colorStart), eColorArr = toRGB(colorEnd);
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
 
-  for(let i = 0; i < tags.length; i++) {
-    let disCount = tags[i].rel - lowest;
-    let fontSize = fontStart + disCount * fontIncr;
-    let style = 'font-size: ' + fontSize + 'px;';
-    let arr = [];
-    for(let c = 0; c < sColorArr.length; c++) {
-      if (disCount === 0) {
-        disCount = 1;
-      }
-      let val = (sColorArr[c] - eColorArr[c]) / range * disCount;
-      if (val >= 100) {
-        val = eColorArr[c];
-      } else if (val <= 0) {
-        val = sColorArr[c];
-      }
-      arr[c] = Math.floor(val);
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
     }
-    style += 'color: ' + toHex(arr);
-    tags[i].style = style;
-  }
-
-  function toRGB(code) {
-    if (code.length === 4) {
-      code = code.replace(/(\w)(\w)(\w)/gi, "\$1\$1\$2\$2\$3\$3");
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
     }
-    var hex = /(\w{2})(\w{2})(\w{2})/.exec(code);
-    return [parseInt(hex[1], 16), parseInt(hex[2], 16), parseInt(hex[3], 16)];
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    jQuery.Velocity(hideElement, 'stop');
+    jQuery.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        jQuery.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
   }
 
-  function toHex(ary) {
-    return "#" + ((1 << 24) + (ary[0] << 16) + (ary[1] << 8) + ary[2]).toString(16).slice(1);
-  }
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
 
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
 </script>
-          </section>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://yangpenghe.ml/post/yong-liao-zhe-me-duo-nian-dao-ban-windows-bu-xiang-zhi-dao-yu-zheng-ban-you-sha-bu-tong-ma/">
+      用了这么多年盗版Windows 不想知道与正版有啥不同吗？
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2021-06-12 08:00:32">2021-06-12</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>7<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>1928<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</section>
+            <div class="post-body next-md-body" id="post_body">
+              <p>微软上任CEO鲍尔默曾痛批，** 中国电脑安装的Windows中，90%都是盗版。 ** 这里不谈数据是否出入，但中国盗版软件猖獗的确是事实。甚至有些人对盗版无知到自己完全分不清楚正版和盗版，而这样的局面，很大一部分程度上微软其实自己也有责任。今天就和大家聊聊有关Windows系统的话题，帮大家了解一下 ** 什么是正版系统，什么是盗版系统。 **</p>
+<!--more-->
+<p>首先,我们还了解一下盗版的概念。 ** 盗版是指在未经版权所有人同意或授权的情况下，对其拥有著作权的作品、出版物等进行由新制造商制造跟源代码完全一致的复制品、再分发的行为。 ** 在绝大多数国家和地区，此行为被定义为侵犯知识产权的违法行为，甚至构成犯罪，会受到所在国家的处罚。</p>
+<p>盗版系统从Windows 9X时代就开始出现了，那时候微软的防盗技术还不成熟，只要输入产品密钥就可以激活了。到了后来WindowsXP盛行时，激活方式改为联网激活，虽然比之前麻烦了一点，但广大的网民还是快快就将Windows XP破解掉了。此后，虽然Windows 7/Windows 8和Win10都采取了更加高级的防盗版技术，但更高明的激活工具也随之而来。有些朋友会说，我用的盗版系统和正版系统没什么区别，所有的功能和正版都是一样的，所以也没必要购买正版操作系统。其实这种想法是不对的，即使我们抛开道德和法律等因素，盗版系统和正版系统还是有很多不同之处的，主要分以下几种情况：</p>
+<p>1、 此前如果你是使用盗版Windows 7系统通过微软免费升级政策升级成Windows 10系统，那么Windows 10系统仍然属于盗版系统。<br>
+2、 使用GHOST装系统，操作系统已经被修改，破解后封装成GHOST。<br>
+3、 KMS激活，利用微软对企业计算机的批量激活漏洞进行激活。<br>
+4、 电话激活，微软因硬件发生变化、重装系统不能用密钥联网激活的正版用户提供“激活ID”服务。</p>
+<p>以上方法是目前比较常见的盗版激活方式，虽然微软已经暂停Windows10的免费升级政策，但很多网友依然可以通过修改系统时间来绕过检测，达到激活目的。下面笔者为大家详细阐述KMS激活和电话激活的原理，以及可能会引起的问题</p>
+<blockquote>
+<p>KMS激活方法弊端</p>
+</blockquote>
+<p>KMS全称Key Management Service。说出来你可能不信，KMS其实是微软官方认可的激活方法。KMS出现的原因：Windows XP和Server 2003要想避开激活机制的最好办法就是去下载VOL版或者MSDN的操作系统，只要输入正确的序列号，甚至有的根本不需要序列号，安装完以后也根本不用激活，并且只要运行一个脚本程序，一个免费的正版Windows就诞生了。为什么我们能这么容易的下载到MSDN或VOL版的XP和2003？其实Windows XP系列系统的MSDN版是Microsoft内部使用的系统，而VOL版是企业版，所以都不需要激活。然而这些版本最终被泄露，导致XP的盗版风无法停住，即使WGA也无能为力。但是在Vista时代，Microsoft早已吸取了这个教训，所以Vista根本没有VOL版，而为企业设计的Windows Vista Enterprise也照样需要激活，并且还有了一个特殊的激活机制——KMS。<br>
+KMS，即通过系统管理员（System Administrator）使用一个批量激活密钥（也就是大家经常看到的Volume Key，Vol密钥，设置一个激活服务器（Activation Server），并在每一个客户机上安装KMS的客户端，就可以进行批量激活和管理，极大的减少了工作量。<br>
+而使用激活工具则会利用局域网和KMS服务器，在网上下载一个VMWare KMS服务器的虚拟机镜像，然后用VMWare调试使虚拟机能和主机连成局域网，再每180天一次激活，就可以让系统保持激活状态。还有，这几个版本的系统试用期总共有180天，快到期的话可以用一个脚本延长，最多延长3次，每次60天，达到激活目的。<br>
+这种激活方法的弊端就是：成功激活后，你的电脑就会变成团队电脑。KMS工具开发者就是管理员。不要不以为然，管理员能够执行的操作权限非常高，拷贝个数据收集个信息简直是小菜一碟，更厉害的还能直接reset你的系统而保留KMS的权限。说不定，哪天KMS的开发者不开心，就帮你清空一下电脑。</p>
+<blockquote>
+<p>电话激活弊端</p>
+</blockquote>
+<p>电话激活是以本机硬件信息和系统信息为参数，用算法得到一组结果，就是一个48位的ID特征码，这个算法是windows系统内置的。然后再用这组产品ID为参数用另外的算法计算，得到激活ID，这个算法在微软服务器那里，所以需要拨打国际电话告诉它参数生成密钥。<br>
+最后再用这组激活ID和产品ID为参数用某种算法去激活系统。这个算法在系统中内置，而且可能会Update。所以一旦来自多个IP的多个产品通过这一个密钥来激活，肯定是盗版出现，所以微软就会封掉密钥，也就无法进行激活了。<br>
+还有一种激活工具甚至连破解都懒得去做，直接采用替换系统文件的方式来达到激活目的。通过修改slmgr.vbs让系统强制通过验证,，实就是让没有验证的系统也写上windows已激活的标志而已，该软件如果通过upgrade或者其他任何方式与微软链接都会立即被查出。<br>
+将该软件解包后会出现另一个EXE文件，再次解包后才会出现源文件，其实就是一个替换的批处理，除了替换一些dll外还会修改slmgr.vbs。<br>
+修改的结果就是无论系统是否通过正版验证都会提示是正版的，其实根本就没有激活，使用中也会出现黑屏状态，显示未激活。<br>
+说了那么多盗版系统，那么什么是正版系统呢？有什么优势呢？非常简单，从微软官网下载的原版系统，并使用合法途径购买密钥进行激活的操作系统即为正版系统。正版系统运行比较稳定，不会发生黑屏蓝屏等现象，不会阉割功能。如果你购买的的电商整机，出于成本考虑，一般都会预装未激活原版系统，而笔记本一般情况会预装正版已激活系统。<br>
+当然，原版系统的全部功能和正版系统是一样安全的，只是会缺少部分功能。比如右下角水印，个性化设置等。所以如果你想在使用电脑时更省心，更专注，那么还是购买正版系统吧！</p>
+
+            </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      杨鹏赫
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://yangpenghe.ml/post/yong-liao-zhe-me-duo-nian-dao-ban-windows-bu-xiang-zhi-dao-yu-zheng-ban-you-sha-bu-tong-ma/" title="用了这么多年盗版Windows 不想知道与正版有啥不同吗？">https://yangpenghe.ml/post/yong-liao-zhe-me-duo-nian-dao-ban-windows-bu-xiang-zhi-dao-yu-zheng-ban-you-sha-bu-tong-ma/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="电脑故障维修的通用法则" href="https://yangpenghe.ml/post/dian-nao-gu-zhang-wei-xiu-de-tong-yong-fa-ze/">电脑故障维修的通用法则</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="电脑故障维修的通用法则" href="https://yangpenghe.ml/post/dian-nao-gu-zhang-wei-xiu-de-tong-yong-fa-ze/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Android Keystore 生成以及作用" href="https://yangpenghe.ml/post/android-keystore-sheng-cheng-yi-ji-zuo-yong/">Android Keystore 生成以及作用</a>
+        <a class="nav-mobile-next" title="Android Keystore 生成以及作用" href="https://yangpenghe.ml/post/android-keystore-sheng-cheng-yi-ji-zuo-yong/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+            
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0fd0c7deebca2b1cf3c5',
+    clientSecret: '4599903a005a5217ad4c624a1ce5c8ee3545fafd',
+    repo: 'PengheYang.Github.io',
+    owner: 'PengheYang',
+    admin: ['PengheYang'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+    
+    
+  
+
+          </div>
         </div>
       </div>
     </div>
@@ -1185,6 +1214,223 @@
     aelem.appendChild(image);
     parent.insertBefore(aelem, next);
   })
+</script>
+
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        jQuery.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        jQuery.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        jQuery.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        jQuery.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      jQuery.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      jQuery.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
 </script>
 
   </div>
@@ -2947,6 +3193,5 @@ adb shell ./data/flash_image recovery /sdcard/recovery.img
   // Using config rendering effect at 'element'.
   const cn = new CanvasNest(document.querySelector('.snow-container'), config);
   </script>
-
 
 </html>

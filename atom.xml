@@ -1,20 +1,939 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://pengheyang.github.io</id>
+    <id>https://yangpenghe.ml</id>
     <title>杨鹏赫Blog</title>
-    <updated>2021-06-11T13:24:21.345Z</updated>
+    <updated>2021-06-12T00:14:40.372Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://pengheyang.github.io"/>
-    <link rel="self" href="https://pengheyang.github.io/atom.xml"/>
+    <link rel="alternate" href="https://yangpenghe.ml"/>
+    <link rel="self" href="https://yangpenghe.ml/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>https://pengheyang.github.io/images/avatar.png</logo>
-    <icon>https://pengheyang.github.io/favicon.ico</icon>
+    <logo>https://yangpenghe.ml/images/avatar.png</logo>
+    <icon>https://yangpenghe.ml/favicon.ico</icon>
     <rights>All rights reserved 2021, 杨鹏赫Blog</rights>
     <entry>
-        <title type="html"><![CDATA[Hello World!]]></title>
-        <id>https://pengheyang.github.io/post/hello-gridea/</id>
-        <link href="https://pengheyang.github.io/post/hello-gridea/">
+        <title type="html"><![CDATA[ Windows NT 安装Net3.5环境]]></title>
+        <id>https://yangpenghe.ml/post/windows-nt-an-zhuang-net35-huan-jing/</id>
+        <link href="https://yangpenghe.ml/post/windows-nt-an-zhuang-net35-huan-jing/">
         </link>
-        <updated>2021-06-11T13:16:24.000Z</updated>
+        <updated>2021-06-12T00:12:43.000Z</updated>
+        <summary type="html"><![CDATA[<p>#准备<br>
+首先你需要有Windows NT内核的iso镜像,然后加载到虚拟光驱</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>#准备<br>
+首先你需要有Windows NT内核的iso镜像,然后加载到虚拟光驱</p>
+<!--more-->
+<p>然后管理员身份运行</p>
+<pre><code>dism.exe /online /enable-feature /featurename:NetFX3 /Source:V:\sources\sxs   #X：虚拟光驱盘符</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Windows 10 激活密钥查看]]></title>
+        <id>https://yangpenghe.ml/post/windows-10-ji-huo-mi-yao-cha-kan/</id>
+        <link href="https://yangpenghe.ml/post/windows-10-ji-huo-mi-yao-cha-kan/">
+        </link>
+        <updated>2021-06-12T00:12:06.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="使用命令查询-windows-密钥">使用命令查询 Windows 密钥</h1>
+<p>您可以尝试下列步骤操作下：</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="使用命令查询-windows-密钥">使用命令查询 Windows 密钥</h1>
+<p>您可以尝试下列步骤操作下：</p>
+<!--more-->
+<ol>
+<li>按Windows 徽标键 + S，弹出搜索框，输入powershell,找到Windows PowerShell，右键点击，点击以管理员身份运行它</li>
+<li>复制这串代码<br>
+<code>(Get-WmiObject -query 'select * from SoftwareLicensingService').OA3xOriginalProductKey</code></li>
+<li>在powershell窗口中，鼠标右键点击即可粘贴上，然后回车一下</li>
+<li>等待几秒后，会显示出OEM的产品密钥出来<br>
+<img src="http://files.yangchendong.ml/files/activateBackup/demo.png" alt="图片" loading="lazy"><br>
+<a href="ed2k://%7Cfile%7Ccn_windows_10_multiple_editions_x64_dvd_6848463.iso%7C4303300608%7C94FD861E82458005A9CA8E617379856A%7C/">Windows 10 64bit (家庭版 &amp; 专业版 2合1)下载链接</a><br>
+文件名:	cn_windows_10_multiple_editions_x64_dvd_6848463.iso<br>
+SHA1:	C71D49A6144772F352806201EF564951BE55EDD5<br>
+文件大小:4.01GB</li>
+</ol>
+<p><strong>注意:查看密钥时Windows是什么版本,安装时就选择什么版本,比如查看密钥时是家庭版,安装时只能选择家庭版才可激活</strong></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Termux]]></title>
+        <id>https://yangpenghe.ml/post/termux/</id>
+        <link href="https://yangpenghe.ml/post/termux/">
+        </link>
+        <updated>2021-06-12T00:11:39.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="termux">Termux</h2>
+<p>Termux是android的linux环境终端模拟器.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="termux">Termux</h2>
+<p>Termux是android的linux环境终端模拟器.</p>
+<!--more-->
+<figure data-type="image" tabindex="1"><img src="https://wiki.termux.com/images/2/21/Weechat-with-keyboard_framed.png" alt="安卓智能手机上的Termux" loading="lazy"></figure>
+<p>Termux是一个android的linux环境终端模拟器和应用程序，使用apt包管理。</p>
+<h2 id="入门">入门</h2>
+<h3 id="安装-openssh">安装 openssh</h3>
+<p><code>apt install openssh</code></p>
+<h3 id="公钥">公钥</h3>
+<p>启用外置存储</p>
+<p><code>termux-setup-storage</code></p>
+<p>Android6.0以上会弹框确认是否授权，执行这条命令确保termux在最前端(当前Activity)<br>
+成功拿到存储权限后会在家目录生成storage目录，并且生成若干目录，软连接都指向外置存储卡的相应目录</p>
+<p>为了方便文件传输可以为QQ创建一个软连接</p>
+<pre><code>ln -s /data/data/com.termux/files/home/storage/shared/tencent/TIMfile_recv qq  #TIM文件夹
+#ln -s /data/data/com.termux/files/home/storage/shared/tencent/QQfile_recv qq #qq文件夹
+</code></pre>
+<p>导入公钥<br>
+<code>cat ~/qq/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></p>
+<h2 id="ssh">SSH</h2>
+<p><code>ssh -p 8022 username@ip</code></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python UnicodeDecodeError错误]]></title>
+        <id>https://yangpenghe.ml/post/python-unicodedecodeerror-cuo-wu/</id>
+        <link href="https://yangpenghe.ml/post/python-unicodedecodeerror-cuo-wu/">
+        </link>
+        <updated>2021-06-12T00:11:18.000Z</updated>
+        <summary type="html"><![CDATA[<h3 id="所报错误">所报错误：</h3>
+<p><code>UnicodeDecodeError: 'ascii' codec can't decode byte 0xc4 in position 33: ordinal not in range(128)</code></p>
+]]></summary>
+        <content type="html"><![CDATA[<h3 id="所报错误">所报错误：</h3>
+<p><code>UnicodeDecodeError: 'ascii' codec can't decode byte 0xc4 in position 33: ordinal not in range(128)</code></p>
+<!--more-->
+<h3 id="unicodedecodeerror-ascii解决办法">UnicodeDecodeError: 'ascii'解决办法：</h3>
+<p>在报错的页面添加代码：</p>
+<pre><code class="language-python">import sys 
+reload(sys) 
+sys.setdefaultencoding('utf8') 
+</code></pre>
+<p>执行 <code>Python filename.py</code>，报错：</p>
+<pre><code>UnicodeDecodeError: 'utf8' codec can't decode byte 0xb0 in position 35: invalid
+ start byte
+</code></pre>
+<h3 id="unicodedecodeerror-utf8解决办法">UnicodeDecodeError: 'utf8'解决办法：</h3>
+<p>在报错的页面添加代码：</p>
+<pre><code class="language-Python">import sys 
+reload(sys) 
+sys.setdefaultencoding('gb18030') 
+</code></pre>
+<p>然后再执行 <code>Python filename.py</code>，成功了。</p>
+<p>下次如果碰到编码问题，只需要看是否是unicode的编码，如果是，你就崩转编码格式了，如果不是，那么就需要转编码格式了。别一碰到类似编码格式的问题，就跑去转编码了。我今天忙了一下午就这么白瞎了。要判断是否是Unicode的，用<code>isinstance(str, unicode)</code>就可以了</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python字符串编码相关的知识]]></title>
+        <id>https://yangpenghe.ml/post/python-zi-fu-chuan-bian-ma-xiang-guan-de-zhi-shi/</id>
+        <link href="https://yangpenghe.ml/post/python-zi-fu-chuan-bian-ma-xiang-guan-de-zhi-shi/">
+        </link>
+        <updated>2021-06-12T00:10:57.000Z</updated>
+        <summary type="html"><![CDATA[<p>开发经常会遇到各种字符串编码的问题，例如报错SyntaxError: Non-ASCII character 'ascii' codec can't encode characters in position 0-2: ordinal not in range(128)，又例如显示乱码。</p>
+<p>由于之前不知道编码的原理，遇到这些情况，就只能不断的用各种编码decode和encode。。。。。</p>
+<p>今天整理一个python中的各种编码问题的原因和解决方法，以后遇到编码问题，就不会像莽头苍蝇一样，到处乱撞了。</p>
+<blockquote>
+<p>下面的python环境都是在2.7，听说在3.X中已经没有编码的问题了，因为所有的字符串都是unicode了，之后装个3.X试一下。</p>
+</blockquote>
+<p>如果不知道什么是decode和encode，建议先看一下：这里<a href="http://www.cnblogs.com/Xjng/p/3809781.html">http://www.cnblogs.com/Xjng/p/3809781.html</a></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>开发经常会遇到各种字符串编码的问题，例如报错SyntaxError: Non-ASCII character 'ascii' codec can't encode characters in position 0-2: ordinal not in range(128)，又例如显示乱码。</p>
+<p>由于之前不知道编码的原理，遇到这些情况，就只能不断的用各种编码decode和encode。。。。。</p>
+<p>今天整理一个python中的各种编码问题的原因和解决方法，以后遇到编码问题，就不会像莽头苍蝇一样，到处乱撞了。</p>
+<blockquote>
+<p>下面的python环境都是在2.7，听说在3.X中已经没有编码的问题了，因为所有的字符串都是unicode了，之后装个3.X试一下。</p>
+</blockquote>
+<p>如果不知道什么是decode和encode，建议先看一下：这里<a href="http://www.cnblogs.com/Xjng/p/3809781.html">http://www.cnblogs.com/Xjng/p/3809781.html</a></p>
+<!--more-->
+<h2 id="encoding的作用">encoding的作用</h2>
+<h3 id="在python文件中如果有中文就一定要在文件的第一行标记使用的编码类型例如-encodingutf-8-就是使用utf-8的编码这个编码有什么作用呢会改变什么呢">在python文件中，如果有中文，就一定要在文件的第一行标记使用的编码类型，例如 #encoding=utf-8 ,就是使用utf-8的编码，这个编码有什么作用呢？会改变什么呢？</h3>
+<p>demo1.py</p>
+<pre><code class="language-python"># encoding=utf-8
+test='测试test'
+print type(test)
+print repr(test)
+</code></pre>
+<p>输出：</p>
+<pre><code>&lt;type 'str'&gt;
+'\xe6\xb5\x8b\xe8\xaf\x95test'
+</code></pre>
+<p>我们通过print把一个变量输出到终端的时候，IDE或者系统一般都会帮我们的输出作转换，例如中文字符会转成中文，所以就看不到变量的原始内容。</p>
+<p>repr函数可以看这个变量的给python看的形式，也就是看到这个变量的原始内容</p>
+<p>从上面的输出可以看到test变量的str类型，它的编码是utf-8的（怎么知道是utf-8，请看第三部分），也就是的encoding类型</p>
+<p>如果我们把encoding改为gbk</p>
+<p>demo2.py</p>
+<pre><code class="language-python"># encoding=gbk
+test='测试test'
+print type(test)
+print repr(test)
+</code></pre>
+<p>输出</p>
+<pre><code>&lt;type 'str'&gt;
+'\xb2\xe2\xca\xd4test'
+</code></pre>
+<p>这样test的编码类型就变为gbk了。</p>
+<p>所以这个encoding会决定在这个py文件中定义的字符串变量的编码方式。</p>
+<p>而如果一个变量是从其他py文件导入，或者从数据库，redis等读取出来的话，它的编码又是怎样的？</p>
+<p>a.py</p>
+<pre><code class="language-python"># encoding=utf-8
+test='测试test'
+</code></pre>
+<p>b.py</p>
+<pre><code class="language-python"># encoding=gbk
+from a import test
+print repr(test)
+</code></pre>
+<p>输出</p>
+<pre><code>'\xe6\xb5\x8b\xe8\xaf\x95test'
+</code></pre>
+<p>a.py中定义test变量，a.py的编码方式是utf-8,b.py的编码方式是gbk,b从a中导入test，结果显示test依然为utf-8编码，也就是a.py的编码</p>
+<p>所以encoding只会决定本py文件的编码方式，不会影响导入的或者从其他地方读取的变量的编码方式</p>
+<h2 id="常见报错codec-cant-encode-characters的原因">常见报错<code>codec can't encode characters</code>的原因</h2>
+<p>python的程序经常会报错 codec can't encode characters 或 codec can't decode characters</p>
+<p>在python中定义一个字符串，</p>
+<pre><code class="language-python">import sys
+print sys.getdefaultencoding() # 输出 ascii
+unicode_test=u'测试test'
+print repr(str(unicode_test))
+</code></pre>
+<p>上面的代码会报错</p>
+<pre><code>'ascii' codec can't encode characters in position 0-1: ordinal not in range(128)
+</code></pre>
+<p>除了str方法外，如果操作两个都有中文的字符串，也会报错，但是只有其中一个有中文，却不会报错</p>
+<pre><code class="language-python">unicode_test = u'测试test%s{0}'
+ 
+print '%stest' % unicode_test  # 不会报错
+print '%s测试' % unicode_test  #会报错
+ 
+print unicode_test % 'test'  #不会报错
+print unicode_test % '测试'  #会报错
+ 
+print unicode_test.format('test') #不会报错
+print unicode_test.format('测试') #会报错
+ 
+print unicode_test.split('test')  #不会报错
+print unicode_test.split('测试')  #报错
+ 
+print unicode_test + 'test'  #不会报错
+print unicode_test + '测试'  #会报错
+</code></pre>
+<p>为什么会这样？</p>
+<p>这原因下面再解答，这里先列出这个报错的解决方法：</p>
+<p>解决方法是：把系统的默认编码设置为utf-8</p>
+<pre><code class="language-python">import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+print sys.getdefaultencoding()
+unicode_test=u'测试test'
+</code></pre>
+<p>demo3.py</p>
+<pre><code class="language-python"># encoding=utf-8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+unicode_test=u'测试test'
+utf8_test='测试test'
+gbk_test=unicode_test.encode('gbk')
+
+#合并unicode和utf-8
+merge=unicode_test+utf8_test
+print type(merge)
+print repr(merge)
+ 
+#合并unicode和gbk
+merge=unicode_test+gbk_test
+print type(merge)
+print repr(merge)
+print merge
+ 
+#合并utf-8和gbk
+merge=utf8_test+gbk_test
+print type(merge)
+print repr(merge)
+print merge
+</code></pre>
+<p>这里定义三个分别是unicode，utf-8和gbk编码的字符串，unicode_test,utf8_test和gbk_test</p>
+<h3 id="合并unicode和utf-8的时候输出">合并unicode和utf-8的时候，输出：</h3>
+<pre><code>&lt;type 'unicode'&gt;
+u'\u6d4b\u8bd5test\u6d4b\u8bd5test'
+</code></pre>
+<p>合并的结果的编码是unicode编码。</p>
+<h3 id="合并unicode和gbk会报错">合并unicode和gbk，会报错：</h3>
+<pre><code>'utf8' codec can't decode byte 0xb2 in position 0: invalid start byte
+</code></pre>
+<p>所以我们可以推测：</p>
+<p>在python对两个字符串进行操作的时候，如果这两个字符串有一个是unicode编码，有一个是非unicode编码，python会将非unicode编码的字符串decode成unicode编码，再进行字符串操作</p>
+<p>例如合并字符串的操作可以写成以下的function：</p>
+<pre><code>def merge_str(str1, str2):
+    if isinstance(str1, unicode) and not isinstance(str2, unicode):
+        str2 = str2.decode(sys.getdefaultencoding())
+    elif not isinstance(str1, unicode) and isinstance(str2, unicode):
+        str1 = str1.decode(sys.getdefaultencoding())
+    return str1 + str2
+</code></pre>
+<p>** PS:sys.getdefaultencoding()的初始值是ascii **</p>
+<p>所以，<code>codec can't encode（decode） characters</code>这个报错是<code>encode</code>或<code>decode</code>这两个方法产生的，而这个方法的参数是sys.getdefaultencoding()。如果用ascii编码对带有中文的字符串进行解码，就会报错。所以修改系统的默认编码可以避免这个报错。</p>
+<p>当执行 str 操作时，python会执行unicode_test.encode(sys.getdefaultencoding()) ，所以也会报错。</p>
+<h3 id="合并utf-8和gbk的时候却不会报错python会直接把两个字符串合并不会有decode或encode的操作但是输出的时候部分字符串会乱码">合并utf-8和gbk的时候却不会报错，python会直接把两个字符串合并，不会有decode或encode的操作，但是输出的时候，部分字符串会乱码。</h3>
+<p>demo4.py</p>
+<pre><code class="language-python"># encoding=gbk
+import sys
+ 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+unicode_test = u'测试test'
+utf8_test = unicode_test.encode('utf-8')
+gbk_test = unicode_test.encode('gbk')
+ 
+merge = utf8_test + gbk_test
+print type(merge)
+print repr(merge)
+print merge
+</code></pre>
+<p>这里文件的encoding是gbk，sys.getdefaultencoding()设置为utf-8，结果是：</p>
+<pre><code>&lt;type 'str'&gt;
+'\xe6\xb5\x8b\xe8\xaf\x95test\xb2\xe2\xca\xd4test'
+测试test����test
+</code></pre>
+<p>即gbk的部分乱码了。所以输出的时候会按照sys.getdefaultencoding()的编码来解码。</p>
+<h2 id="怎么判断一个字符串string的编码方式">怎么判断一个字符串（string）的编码方式</h2>
+<h3 id="没有办法准确地判断一个字符串的编码方式例如gbk的aa代表甲utf-8的aa代表乙如果给定aa怎么判断是哪种编码它既可以是gbk也可以是utf-8">没有办法准确地判断一个字符串的编码方式，例如gbk的“\aa”代表甲，utf-8的“\aa”代表乙，如果给定“\aa”怎么判断是哪种编码？它既可以是gbk也可以是utf-8</h3>
+<h3 id="我们能做的是粗略地判断一个字符串的编码方式因为上面的例如的情况是很少的更多的情况是gbk中的aa代表甲utf-8中是乱码例如这样我们就能判断aa是gbk编码因为如果用utf-8编码去解码的结果是没有意义的">我们能做的是粗略地判断一个字符串的编码方式，因为上面的例如的情况是很少的，更多的情况是gbk中的’\aa’代表甲，utf-8中是乱码，例如�，这样我们就能判断’\aa’是gbk编码，因为如果用utf-8编码去解码的结果是没有意义的</h3>
+<h3 id="而我们经常遇到的编码其实主要的就只有三种utf-8gbkunicode">而我们经常遇到的编码其实主要的就只有三种：utf-8，gbk，unicode</h3>
+<p>unicode一般是 \u 带头的，然后后面跟四位数字或字符串，例如 \u6d4b\u8bd5 ，一个\u对应一个汉字<br>
+utf-8一般是 \x 带头的，后面跟两位字母或数字，例如 \xe6\xb5\x8b\xe8\xaf\x95\xe5\x95\x8a ，三个 \x 代表一个汉字<br>
+gbk一般是 \x 带头的，后面跟两位字母或数字，例如 \xb2\xe2\xca\xd4\xb0\xa1，两个个 \x 代表一个汉字</p>
+<h3 id="使用chardet模块来判断">使用chardet模块来判断</h3>
+<pre><code>import chardet
+raw = u'我是一只小小鸟'
+print chardet.detect(raw.encode('utf-8'))
+print chardet.detect(raw.encode('gbk'))
+</code></pre>
+<p>输出：</p>
+<pre><code>{'confidence': 0.99, 'encoding': 'utf-8'}
+{'confidence': 0.99, 'encoding': 'GB2312'}
+</code></pre>
+<p>chardet模块可以计算这个字符串是某个编码的概率，基本对于99%的应用场景，这个模块都够用了。</p>
+<h2 id="string_escape和unicode_escape">string_escape和unicode_escape</h2>
+<h3 id="string_escape">string_escape</h3>
+<p>在str中，\x是保留字符，表示后面的两位字符表示一个字符单元（暂且这么叫，不知道对不对），例如'\xe6'，一般三个字符单元表示一个中文字符</p>
+<p>所以在定义变量时，a='\xe6\x88\x91',是代表定义了一个中文字符“我”，但是有时候，我们不希望a这个变量代表中文字符，而是代表3*4=12个英文字符，可以使用encode('string_escape')来转换：</p>
+<pre><code>'\xe6\x88\x91'.encode('string_escape')='\\xe6\\x88\\x91'
+</code></pre>
+<p>decode就是反过来。</p>
+<p>转换前后的类型都是string。</p>
+<p>还有一个现象，定义a='\x',a='\x0'都是会报错ValueError: invalid \x escape的，而定义a='\a',即反斜杠后面不是跟x，都会没问题，而定义a='\x00'，即x后面跟两个字符，也是没问题的。</p>
+<h3 id="unicode_escape">unicode_escape</h3>
+<p>同理在unicode中，\u是保留字符，表示后面的四个字符表示一个中文字符，例如b=u'u6211'，表示“我:”，同理我们希望b变量，表示6个英文字符，而不是一个中文字符，就可以使用encode(‘unicode-escape’)来转换：</p>
+<pre><code>u'u6211'.encode('unicode-escape')='\u6211'
+</code></pre>
+<p>注意encode前是unicode，转换后是string。</p>
+<p>在unicode中，\u是保留字符，但是在string中，就不是了，所以只有一个反斜杠，而不是两个。</p>
+<p>decode就是反过来。</p>
+<p>同理，a='\u'也是会报错的</p>
+<h3 id="例子">例子</h3>
+<pre><code class="language-python">#正常的str和unicode字符
+str_char='我'
+uni_char=u'我'
+print repr(str_char) # '\xe6\x88\x91'
+print repr(uni_char) #  u'\u6211'
+ 
+# decode('unicode-escape')
+s1='\u6211'
+s2=s1.decode('unicode-escape')
+print repr(s1) # '\\u6211'
+print repr(s2) # u'\u6211'
+ 
+# encode('unicode-escape')
+s1=u'\u6211'
+s2=s1.encode('unicode-escape')
+print repr(s1) # u'\u6211'
+print repr(s2) # '\\u6211'
+ 
+# decode(&quot;string_escape&quot;)
+s1='\\xe6\\x88\\x91'
+s2=s1.decode('string_escape')
+print repr(s1) # '\\xe6\\x88\\x91'
+print repr(s2) # '\xe6\x88\x91'
+ 
+# encode(&quot;string_escape&quot;)
+s1='\xe6\x88\x91'
+s2=s1.encode('string_escape')
+print repr(s1) # '\xe6\x88\x91'
+print repr(s2) # '\\xe6\\x88\\x91'
+</code></pre>
+<h3 id="应用">应用</h3>
+<p>内容是unicode，但是type是str，就可以使用decode(&quot;unicode_escape&quot;)转换为内容和type都是unicode</p>
+<pre><code>s1='\u6211'
+s2=s1.decode('unicode-escape')
+</code></pre>
+<p>内容是str，但是type是unicode,就可以使用encode(&quot;unicode_escape&quot;).decode(&quot;string_escape&quot;)转换为内容和type都是str</p>
+<pre><code>s1=u'\xe6\x88\x91'
+s2=s1.encode('unicode_escape').decode(&quot;string_escape&quot;)
+</code></pre>
+<blockquote>
+<p>来源：Xjng<br>
+链接：www.cnblogs.com/Xjng/p/5093905.html</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python猜拳小游戏的实现!]]></title>
+        <id>https://yangpenghe.ml/post/python-cai-quan-xiao-you-xi-de-shi-xian/</id>
+        <link href="https://yangpenghe.ml/post/python-cai-quan-xiao-you-xi-de-shi-xian/">
+        </link>
+        <updated>2021-06-12T00:10:39.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="构思">构思</h1>
+<h2 id="规则">规则</h2>
+<ul>
+<li>相信大家都知道剪刀石头布的游戏规则,但是在计算机中该如何实现呢?</li>
+<li>剪刀&gt;石头&gt;布是一个圈 相互克制</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="构思">构思</h1>
+<h2 id="规则">规则</h2>
+<ul>
+<li>相信大家都知道剪刀石头布的游戏规则,但是在计算机中该如何实现呢?</li>
+<li>剪刀&gt;石头&gt;布是一个圈 相互克制</li>
+</ul>
+<!--more-->
+<h2 id="思路">思路</h2>
+<p>我的想法是如果利用数字1,2,3代替剪刀、石头、布</p>
+<p>用玩家 减去 电脑</p>
+<table>
+<thead>
+<tr>
+<th>玩家 --- 电脑</th>
+<th style="text-align:center">剪刀(1)</th>
+<th style="text-align:center">石头 (2)</th>
+<th style="text-align:right">布(3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>剪刀(1)</td>
+<td style="text-align:center">平(0)</td>
+<td style="text-align:center">电脑赢(-1)</td>
+<td style="text-align:right">玩家赢(-2)</td>
+</tr>
+<tr>
+<td>石头(2)</td>
+<td style="text-align:center">玩家赢(1)</td>
+<td style="text-align:center">平(0)</td>
+<td style="text-align:right">电脑赢(-1)</td>
+</tr>
+<tr>
+<td>布(3)</td>
+<td style="text-align:center">电脑赢(2)</td>
+<td style="text-align:center">玩家赢(1)</td>
+<td style="text-align:right">平(0)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:right"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>玩家赢</td>
+<td style="text-align:center">-2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>平局</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>电脑赢</td>
+<td style="text-align:center">-1</td>
+<td style="text-align:center">-1</td>
+<td style="text-align:right">2</td>
+</tr>
+</tbody>
+</table>
+<p>想办法把这三组数区分开,</p>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:right"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>首先 +4</td>
+<td style="text-align:center">玩家: 2,5(赢)</td>
+<td style="text-align:center">4(平)</td>
+<td style="text-align:right">3,6(输)</td>
+</tr>
+<tr>
+<td>对 3 取余</td>
+<td style="text-align:center">玩家: 2(赢)</td>
+<td style="text-align:center">1(平)</td>
+<td style="text-align:right">0(输)</td>
+</tr>
+<tr>
+<td>再 -1</td>
+<td style="text-align:center">玩家: 1(赢)</td>
+<td style="text-align:center">0(平)</td>
+<td style="text-align:right">-1(输)</td>
+</tr>
+</tbody>
+</table>
+<p>这只是其中一种方法,大家不拘泥于这种方法!只要想办法把这三类分开就可以!</p>
+<h2 id="实现代码">实现代码</h2>
+<pre><code class="language-python"># -*- coding:utf-8 -*-
+import random
+
+info = '''
+		猜拳游戏
+		1: 剪刀
+		2: 石头
+		3: 布
+		0: 退出
+		根据提示信息填写内容!
+'''
+
+user = int(raw_input(info))
+
+select = ['剪刀','石头','布']
+
+count = 0
+you_win_count = 0
+draw_count = 0
+
+while user != 0:
+    if 3 &lt; user or user &lt; 1:
+        print '输入错误'
+    else:
+        count += 1
+        computer = random.randint(1,3)
+        print('你出的是:' + str(select[user - 1]))
+        print('电脑出的是:' + str(select[computer - 1]))
+        result = (user - computer + 4) % 3 - 1
+
+    if result &gt; 0 :
+        you_win_count += 1
+        print '你胜利!'
+    elif result == 0:
+        draw_count += 1
+        print '平局'
+    elif result &lt; 0:
+        print '电脑胜利'
+    go_on = raw_input('是否继续?[Y/N]:')
+    if  go_on == 'Y' or go_on == 'y':
+        user = int(raw_input(info))
+    else:
+        break
+
+end = '''
+        共 %d 局
+        您胜利: %d 局
+        平局: %d 局
+        再见!
+''' % (count,you_win_count,draw_count)
+
+print(end)
+
+</code></pre>
+<h1 id="总结">总结</h1>
+<p>这道题目看似简单,但是十分考验逻辑思维.大家还有什么更简洁的方法请在下面评论吧! Ψ(￣∀￣)Ψ</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python3 图片隐写术]]></title>
+        <id>https://yangpenghe.ml/post/python3-tu-pian-yin-xie-zhu/</id>
+        <link href="https://yangpenghe.ml/post/python3-tu-pian-yin-xie-zhu/">
+        </link>
+        <updated>2021-06-12T00:10:18.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p><strong>隐写术</strong>是一门关于信息隐藏的技巧与科学，所谓信息隐藏指的是不让除预期的接收者之外的任何人知晓信息的传递事件或者信息的内容。隐写术的英文叫做Steganography，来源于<a href="https://zh.wikipedia.org/wiki/%E7%BA%A6%E7%BF%B0%E5%B0%BC%E6%96%AF%C2%B7%E7%89%B9%E9%87%8C%E7%89%B9%E7%B1%B3%E4%B9%8C%E6%96%AF">特里特米乌斯</a>的一本讲述<a href="https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A2%BC%E5%AD%B8">密码学</a>与隐写术的著作<em>Steganographia</em>，该书书名源于<a href="https://zh.wikipedia.org/wiki/%E5%B8%8C%E8%87%98%E8%AA%9E">希腊语</a>，意为“隐秘书写”。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p><strong>隐写术</strong>是一门关于信息隐藏的技巧与科学，所谓信息隐藏指的是不让除预期的接收者之外的任何人知晓信息的传递事件或者信息的内容。隐写术的英文叫做Steganography，来源于<a href="https://zh.wikipedia.org/wiki/%E7%BA%A6%E7%BF%B0%E5%B0%BC%E6%96%AF%C2%B7%E7%89%B9%E9%87%8C%E7%89%B9%E7%B1%B3%E4%B9%8C%E6%96%AF">特里特米乌斯</a>的一本讲述<a href="https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A2%BC%E5%AD%B8">密码学</a>与隐写术的著作<em>Steganographia</em>，该书书名源于<a href="https://zh.wikipedia.org/wiki/%E5%B8%8C%E8%87%98%E8%AA%9E">希腊语</a>，意为“隐秘书写”。</p>
+</blockquote>
+<!--more-->
+<h1 id="原理">原理</h1>
+<blockquote>
+<p>载体文件（cover file）相对隐秘文件的大小（指数据含量，以比特计）越大，隐藏后者就越加容易。<br>
+因为这个原因，数字图像（包含有大量的数据）在因特网和其他传媒上被广泛用于隐藏消息。这种方法使用的广泛程度无从查考。例如：一个24位的位图中的每个像素的三个颜色分量（红，绿和蓝）各使用8个比特来表示。如果我们只考虑蓝色的话，就是说有2^8种不同的数值来表示深浅不同的蓝色。而像11111111和11111110这两个值所表示的蓝色，人眼几乎无法区分。因此，这个最低有效位就可以用来存储颜色之外的信息，而且在某种程度上几乎是检测不到的。如果对红色和绿色进行同样的操作，就可以在差不多三个像素中存储一个字节的信息。<br>
+更正式一点地说，使隐写的信息难以探测的，也就是保证“有效载荷”（需要被隐蔽的信号）对“载体”（即原始的信号）的调制对载体的影响看起来（理想状况下甚至在统计上）可以忽略。这就是说，这种改变应该无法与载体中的噪声加以区别。<br>
+（从信息论的观点来看，这就是说信道的容量必须大于传输“表面上”的信号的需求。这就叫做信道的冗余。对于一幅数字图像，这种冗余可能是成像单元的噪声；对于数字音频，可能是录音或者放大设备所产生的噪声。任何有着模拟放大级的系统都会有所谓的热噪声（或称“1/f”噪声)，这可以用作掩饰。另外，有损压缩技术（如JPEG）会在解压后的数据中引入一些误差，利用这些误差作隐写术用途也是可能的。）<br>
+隐写术也可以用作数字水印，这里一条消息（往往只是一个标识符）被隐藏到一幅图像中，使得其来源能够被跟踪或校验。</p>
+</blockquote>
+<p>总而言之，本实验便是利用图片四个颜色分量（rgba）的最低有效位（英语：Least Significant Bit，lsb）来隐藏信息（本实验隐藏的是文字）</p>
+<h1 id="程序实现">程序实现</h1>
+<p>先安装 Pillow：</p>
+<pre><code class="language-sh">$ sudo pip3 install Pillow
+</code></pre>
+<p>导入 Pillow 模块：</p>
+<pre><code class="language-python">from PIL import Image
+</code></pre>
+<h2 id="编码">编码</h2>
+<p>我们首先设计将隐藏信息编码到图片中的函数 <code>encodeDataInImage()</code>，其有两个参数，分别是用作载体的图片对象和需要被隐藏的字符串。也就是说我们可以这样调用它：</p>
+<pre><code class="language-python">encodeDataInImage(Image.open(&quot;steganographia.png&quot;), '你好世界，Hello world!')
+</code></pre>
+<p><code>encodeDataInImage()</code> 函数如下：</p>
+<pre><code class="language-python">def encodeDataInImage(image, data):
+    evenImage = makeImageEven(image)  # 获得最低有效位为 0 的图片副本
+    binary = ''.join(map(constLenBin,bytearray(data, 'utf-8'))) # 将需要被隐藏的字符串转换成二进制字符串
+    if len(binary) &gt; len(image.getdata()) * 4:  # 如果不可能编码全部数据， 抛出异常
+        raise Exception(&quot;Error: Can't encode more than &quot; + len(evenImage.getdata()) * 4 + &quot; bits in this image. &quot;)
+    encodedPixels = [(r+int(binary[index*4+0]),g+int(binary[index*4+1]),b+int(binary[index*4+2]),t+int(binary[index*4+3])) if index*4 &lt; len(binary) else (r,g,b,t) for index,(r,g,b,t) in enumerate(list(evenImage.getdata()))] # 将 binary 中的二进制字符串信息编码进像素里
+    encodedImage = Image.new(evenImage.mode, evenImage.size)  # 创建新图片以存放编码后的像素
+    encodedImage.putdata(encodedPixels)  # 添加编码后的数据
+    return encodedImage
+</code></pre>
+<p><code>makeImageEven()</code> 函数的实现如下：</p>
+<pre><code class="language-python">def makeImageEven(image):
+    pixels = list(image.getdata())  # 得到一个这样的列表： [(r,g,b,t),(r,g,b,t)...]
+    evenPixels = [(r&gt;&gt;1&lt;&lt;1,g&gt;&gt;1&lt;&lt;1,b&gt;&gt;1&lt;&lt;1,t&gt;&gt;1&lt;&lt;1) for [r,g,b,t] in pixels]  # 更改所有值为偶数（魔法般的移位）
+    evenImage = Image.new(image.mode, image.size)  # 创建一个相同大小的图片副本
+    evenImage.putdata(evenPixels)  # 把上面的像素放入到图片副本
+    return evenImage
+</code></pre>
+<p><code>encodeDataInImage()</code> 中，<code>bytearray()</code> 将字符串转换为整数值序列（数字范围是 0 到 2^8-1），数值序列由字符串的字节数据转换而来，utf-8 编码的中文字符一个就占了3个字节，那么四个字符共占 3×4=12 个字节，于是共有12个数字。然后 <code>map(constLenBin,bytearray(data, 'utf-8'))</code> 对数值序列中的每一个值应用 <code>constLenBin()</code> 函数，将十进制数值序列转换为二进制字符串序列。</p>
+<pre><code class="language-python">def constLenBin(int):
+    binary = &quot;0&quot;*(8-(len(bin(int))-2))+bin(int).replace('0b','')  # 去掉 bin() 返回的二进制字符串中的 '0b'，并在左边补足 '0' 直到字符串长度为 8
+    return binary
+</code></pre>
+<p>在这里 <code>bin()</code> 的作用是将一个 int 值转换为二进制字符串，详见： <a href="https://docs.python.org/3/library/functions.html#bin">https://docs.python.org/3/library/functions.html#bin</a></p>
+<h2 id="解码">解码</h2>
+<p><code>decodeImage()</code> 返回图片解码后的隐藏文字，其接受一个图片对象参数。</p>
+<pre><code>def decodeImage(image):
+    pixels = list(image.getdata())  # 获得像素列表
+    binary = ''.join([str(int(r&gt;&gt;1&lt;&lt;1!=r))+str(int(g&gt;&gt;1&lt;&lt;1!=g))+str(int(b&gt;&gt;1&lt;&lt;1!=b))+str(int(t&gt;&gt;1&lt;&lt;1!=t)) for (r,g,b,t) in pixels])  # 提取图片中所有最低有效位中的数据
+    # 找到数据截止处的索引
+    locationDoubleNull = binary.find('0000000000000000')
+    endIndex = locationDoubleNull+(8-(locationDoubleNull % 8)) if locationDoubleNull%8 != 0 else locationDoubleNull
+    data = binaryToString(binary[0:endIndex])
+    return data
+
+</code></pre>
+<blockquote>
+<p><a href="https://docs.python.org/3/library/stdtypes.html#str.find">str.find()</a></p>
+</blockquote>
+<p>找到数据截止处所用的字符串 <code>'0000000000000000'</code> 很有意思，他的长度为16，而不是直觉上的 8，因为两个包含数据的字节的接触部分可能有 8 个 0。</p>
+<p><code>binaryToString()</code> 函数将提取出来的二进制字符串转换为隐藏的文本：</p>
+<pre><code>def binaryToString(binary):
+    index = 0
+    string = []
+    rec = lambda x, i: x[2:8] + (rec(x[8:], i-1) if i &gt; 1 else '') if x else ''
+    # rec = lambda x, i: x and (x[2:8] + (i &gt; 1 and rec(x[8:], i-1) or '')) or ''
+    fun = lambda x, i: x[i+1:8] + rec(x[8:], i-1)
+    while index + 1 &lt; len(binary):
+        chartype = binary[index:].index('0')
+        length = chartype*8 if chartype else 8
+        string.append(chr(int(fun(binary[index:index+length],chartype),2)))
+        index += length
+    return ''.join(string)
+
+</code></pre>
+<p>要看明白这个，必须要先搞懂 UTF-8 编码的方式，可以在 wikipedia 上了解 UTF-8 编码：<a href="https://zh.wikipedia.org/wiki/UTF-8">https://zh.wikipedia.org/wiki/UTF-8</a></p>
+<p>UTF-8 是 UNICODE的一种变长度的编码表达方式，也就是说一个字符串中，不同的字符所占的字节数不一定相同，这就给我们的工作带来了一点复杂度，如果我们要支持中文的话（那不是废话么）。</p>
+<table>
+<thead>
+<tr>
+<th>码点的位数</th>
+<th>码点起值</th>
+<th>码点终值</th>
+<th>字节序列</th>
+<th>Byte 1</th>
+<th>Byte 2</th>
+<th>Byte 3</th>
+<th>Byte 4</th>
+<th>Byte 5</th>
+<th>Byte 6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>U+0000</td>
+<td>U+007F</td>
+<td>1</td>
+<td><code>0xxxxxxx</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>U+0080</td>
+<td>U+07FF</td>
+<td>2</td>
+<td><code>110xxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>U+0800</td>
+<td>U+FFFF</td>
+<td>3</td>
+<td><code>1110xxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>21</td>
+<td>U+10000</td>
+<td>U+1FFFFF</td>
+<td>4</td>
+<td><code>11110xxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>26</td>
+<td>U+200000</td>
+<td>U+3FFFFFF</td>
+<td>5</td>
+<td><code>111110xx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td></td>
+</tr>
+<tr>
+<td>31</td>
+<td>U+4000000</td>
+<td>U+7FFFFFFF</td>
+<td>6</td>
+<td><code>1111110x</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+<td><code>10xxxxxx</code></td>
+</tr>
+</tbody>
+</table>
+<p>在上图中，只有 <code>x</code> 所在的位置（也即是字节中第一个 0 之后的数据）存储的是真正的字符数据，因此我们使用下面两个匿名函数来提取出这些数据：</p>
+<pre><code>rec = lambda x, i: x[2:8] + (rec(x[8:], i-1) if i &gt; 1 else '') if x else ''
+fun = lambda x, i: x[i+1:8] + rec(x[8:], i-1)
+
+</code></pre>
+<p><code>fun()</code> 接受 2 个参数，第一个参数为表示一个字符的二进制字符串，这个二进制字符串可能有不同的长度（8、16、24...48）；第二个参数为这个字符占多少个字节。</p>
+<p><code>lambda x, i: x[i+1:8] + rec(x[8:], i-1)</code> 中 <code>x[i+1:8]</code> 获得第一个字节的数据，然后调用 rec()，以递归的方提取后面字节中的数据。</p>
+<p>这里要提一句，<code>rec = lambda x, i: x[2:8] + (rec(x[8:], i-1) if i &gt; 1 else '') if x else ''</code>，你可能对在表达式里面引用了 <code>rec</code> 感到不可理解，的确，严格意义上这样是不能实现递归的，但在 python 里这样是可以的，这就是 python 的语法糖了。</p>
+<p>使用 lambda 表达式写递归从来不是一件简单的事，因为匿名函数引用自身并不简单，大家可以参考一下大牛刘未鹏的博文：<a href="http://blog.csdn.net/pongba/article/details/1336028">http://blog.csdn.net/pongba/article/details/1336028</a></p>
+<p>我们注意到，字符的字节数据中，第一个字节开头 <code>1</code> 的数目便是字符所占的字节数：</p>
+<pre><code>chartype = binary[index:].index('0') # 存放字符所占字节数，一个字节的字符会存为 0
+
+</code></pre>
+<p><code>string.append(chr(int(fun(binary[index:index+length],chartype),2)))</code> 这一行中用到的函数 <code>int()</code> 以及 <code>chr</code> 的作用如下：</p>
+<p><code>int()</code>: 接受两个参数，第一个参数为数字字符串，第二个参数为这个数字字符串代表的数字的进制。详见： <a href="https://docs.python.org/3/library/functions.html#int">https://docs.python.org/3/library/functions.html#int</a></p>
+<p><code>chr()</code>：接受一个参数，参数为 int 值，返回 Unicode 码点为这个 int 值的字符。</p>
+<h2 id="测试效果">测试效果</h2>
+<p>获取图片</p>
+<pre><code class="language-sh">$ wget http://yangchendong.ml/files/Python3Steganography/coffee.png  
+</code></pre>
+<p>在我们的代码后添加这两行：</p>
+<pre><code class="language-python">encodeDataInImage(Image.open(&quot;coffee.png&quot;), '你好世界，Hello world!').save('encodeImage.png')
+print(decodeImage(Image.open(&quot;encodeImage.png&quot;)))
+</code></pre>
+<p>假设你的源代码文件为 steganography.py：</p>
+<pre><code class="language-sh">$ python3 steganography
+</code></pre>
+<p>它应该打印出 &quot;你好世界，Hello world!&quot;。</p>
+<h1 id="完整代码">完整代码</h1>
+<p>使用下面的命令可以下载源代码：</p>
+<pre><code class="language-shell">$ wget http://yangchendong.ml/files/Python3Steganography/steganography.py
+</code></pre>
+<pre><code class="language-python">from PIL import Image
+
+&quot;&quot;&quot;
+取得一个 PIL 图像并且更改所有值为偶数（使最低有效位为 0）
+&quot;&quot;&quot;
+def makeImageEven(image):
+    pixels = list(image.getdata())  # 得到一个这样的列表： [(r,g,b,t),(r,g,b,t)...]
+    evenPixels = [(r&gt;&gt;1&lt;&lt;1,g&gt;&gt;1&lt;&lt;1,b&gt;&gt;1&lt;&lt;1,t&gt;&gt;1&lt;&lt;1) for [r,g,b,t] in pixels]  # 更改所有值为偶数（魔法般的移位）
+    evenImage = Image.new(image.mode, image.size)  # 创建一个相同大小的图片副本
+    evenImage.putdata(evenPixels)  # 把上面的像素放入到图片副本
+    return evenImage
+
+&quot;&quot;&quot;
+内置函数 bin() 的替代，返回固定长度的二进制字符串
+&quot;&quot;&quot;
+def constLenBin(int):
+    binary = &quot;0&quot;*(8-(len(bin(int))-2))+bin(int).replace('0b','')  # 去掉 bin() 返回的二进制字符串中的 '0b'，并在左边补足 '0' 直到字符串长度为 8
+    return binary
+
+&quot;&quot;&quot;
+将字符串编码到图片中
+&quot;&quot;&quot;
+def encodeDataInImage(image, data):
+    evenImage = makeImageEven(image)  # 获得最低有效位为 0 的图片副本
+    binary = ''.join(map(constLenBin,bytearray(data, 'utf-8'))) # 将需要被隐藏的字符串转换成二进制字符串
+    if len(binary) &gt; len(image.getdata()) * 4:  # 如果不可能编码全部数据， 抛出异常
+        raise Exception(&quot;Error: Can't encode more than &quot; + len(evenImage.getdata()) * 4 + &quot; bits in this image. &quot;)
+    encodedPixels = [(r+int(binary[index*4+0]),g+int(binary[index*4+1]),b+int(binary[index*4+2]),t+int(binary[index*4+3])) if index*4 &lt; len(binary) else (r,g,b,t) for index,(r,g,b,t) in enumerate(list(evenImage.getdata()))] # 将 binary 中的二进制字符串信息编码进像素里
+    encodedImage = Image.new(evenImage.mode, evenImage.size)  # 创建新图片以存放编码后的像素
+    encodedImage.putdata(encodedPixels)  # 添加编码后的数据
+    return encodedImage
+
+&quot;&quot;&quot;
+从二进制字符串转为 UTF-8 字符串
+&quot;&quot;&quot;
+def binaryToString(binary):
+    index = 0
+    string = []
+    rec = lambda x, i: x[2:8] + (rec(x[8:], i-1) if i &gt; 1 else '') if x else ''
+    # rec = lambda x, i: x and (x[2:8] + (i &gt; 1 and rec(x[8:], i-1) or '')) or ''
+    fun = lambda x, i: x[i+1:8] + rec(x[8:], i-1)
+    while index + 1 &lt; len(binary):
+        chartype = binary[index:].index('0') # 存放字符所占字节数，一个字节的字符会存为 0
+        length = chartype*8 if chartype else 8
+        string.append(chr(int(fun(binary[index:index+length],chartype),2)))
+        index += length
+    return ''.join(string)
+
+&quot;&quot;&quot;
+解码隐藏数据
+&quot;&quot;&quot;
+def decodeImage(image):
+    pixels = list(image.getdata())  # 获得像素列表
+    binary = ''.join([str(int(r&gt;&gt;1&lt;&lt;1!=r))+str(int(g&gt;&gt;1&lt;&lt;1!=g))+str(int(b&gt;&gt;1&lt;&lt;1!=b))+str(int(t&gt;&gt;1&lt;&lt;1!=t)) for (r,g,b,t) in pixels]) # 提取图片中所有最低有效位中的数据
+    # 找到数据截止处的索引
+    locationDoubleNull = binary.find('0000000000000000')
+    endIndex = locationDoubleNull+(8-(locationDoubleNull % 8)) if locationDoubleNull%8 != 0 else locationDoubleNull
+    data = binaryToString(binary[0:endIndex])
+    return data
+
+encodeDataInImage(Image.open(&quot;coffee.png&quot;), '你好世界，Hello world!').save('encodeImage.png')
+print(decodeImage(Image.open(&quot;encodeImage.png&quot;)))
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux环境jdk安装及配置]]></title>
+        <id>https://yangpenghe.ml/post/linux-huan-jing-jdk-an-zhuang-ji-pei-zhi/</id>
+        <link href="https://yangpenghe.ml/post/linux-huan-jing-jdk-an-zhuang-ji-pei-zhi/">
+        </link>
+        <updated>2021-06-12T00:10:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Linux下安装jdk，步骤如下：</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Linux下安装jdk，步骤如下：</p>
+<!--more-->
+<p>1：下载jdk包：本章使用的为后缀为tar.gz的文件（不需要安装），如jdk-7u67-linux-i586.tar.gz</p>
+<p>2： 把jdk文件保存至Linux下目录：通过控制台，使用mkdir命令生成user/java目录，并把文件放入其下</p>
+<p>3：解压tar.gz文件：通过控制台，进入user/java下，执行$ tar zxvf jdk-7u67-linux-i586.tar.gz，将其进行解压</p>
+<p>4：配置环境变量：打开控制台，运行$ sudo vi /etc/profile，在最后插入要配置的内容 ，按Esc键 ，输入( :wq 保存并退出)</p>
+<pre><code>JAVA_HOME=/home/gcs/user/java/jdk1.7.0_67
+PATH=$JAVA_HOME/bin:$PATH
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export JAVA_HOME
+export PATH
+export CLASSPATH
+</code></pre>
+<p>5：运行$ source /etc/profile，使配置环境生效</p>
+<p>6：运行$ java -version 看是否生效。若出现jdk版本号，则安装并配置环境变量成功</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux多个私钥配置]]></title>
+        <id>https://yangpenghe.ml/post/linux-duo-ge-si-yao-pei-zhi/</id>
+        <link href="https://yangpenghe.ml/post/linux-duo-ge-si-yao-pei-zhi/">
+        </link>
+        <updated>2021-06-12T00:09:41.000Z</updated>
+        <summary type="html"><![CDATA[<ol>
+<li>
+<p>创建多个SSH密钥</p>
+<pre><code> $ssh-keygen -t dsa -C &quot;email.xxx&quot; -f ~/.ssh/xxx
+</code></pre>
+<p>以上命令是在~/.ssh下生成密钥对</p>
+</li>
+</ol>
+]]></summary>
+        <content type="html"><![CDATA[<ol>
+<li>
+<p>创建多个SSH密钥</p>
+<pre><code> $ssh-keygen -t dsa -C &quot;email.xxx&quot; -f ~/.ssh/xxx
+</code></pre>
+<p>以上命令是在~/.ssh下生成密钥对</p>
+</li>
+</ol>
+<!-- more -->
+<ol start="2">
+<li>
+<p>编辑配置文件</p>
+<p><code>$vim ~/.ssh/config</code></p>
+<pre><code> Host github.com
+    HostName        github.com
+    User            git
+    IdentityFile    ~/.ssh/githubid_rsa
+  
+ Host 192.168.1.2
+   HostName        192.168.1.2
+   User            git
+   IdentityFile    ~/.ssh/gitid_rsa
+</code></pre>
+</li>
+<li>
+<p>把xxx.pub公钥文件的内容加入到要自动登陆服务器指定用户下的~/.ssh/authorized_keys 文件中</p>
+</li>
+<li>
+<p>使用SSH登录主机时会自动判断使用哪一对密钥</p>
+</li>
+<li>
+<p>多个公钥直接在追加到authorized_keys文件中就可以了</p>
+</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ alien：.deb与.rpm包转换工具]]></title>
+        <id>https://yangpenghe.ml/post/aliendeb-yu-rpm-bao-zhuan-huan-gong-ju/</id>
+        <link href="https://yangpenghe.ml/post/aliendeb-yu-rpm-bao-zhuan-huan-gong-ju/">
+        </link>
+        <updated>2021-06-12T00:09:13.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>deb 与 rpm 是GNU/Linux 流行的软件包格式。我们“alien”可以在rpm\dpkg\slackware tgz\deb\slp 格式见进行转换。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>deb 与 rpm 是GNU/Linux 流行的软件包格式。我们“alien”可以在rpm\dpkg\slackware tgz\deb\slp 格式见进行转换。</p>
+</blockquote>
+<!--more-->
+<h1 id="安装">安装</h1>
+<p>Debian/Ubuntu 可使用下面命令安装alien：</p>
+<pre><code class="language-shell">$ sudo apt-get install alien
+</code></pre>
+<p>Redhat/Centos 请rpm find找个alien的rpm包安装</p>
+<p>附:	源码文件:<a href="http://files.yangchendong.ml/files/DEB_TO_RPM/alien.tar.gz">点击这里</a></p>
+<h1 id="转换">转换</h1>
+<p><strong>从RPM转到DEB</strong></p>
+<p>举例：假设在目录/tmp 有myprogram.rpm 文件，使用下面命令转换：</p>
+<pre><code class="language-shell">$ sudo alien /tmp/myprogram-1.10-2.i386.rpm
+$ myprogram-1.10-3.i386.deb generated
+</code></pre>
+<p>这时，在/tmp 目录下就会发现有 myprogram.deb ，这时就可以使用dpkg安装：</p>
+<pre><code class="language-shell">$ dpkg -i /tmp/miprogramma.deb
+</code></pre>
+<p><strong>从DEB转到RPM</strong></p>
+<p>直接添加参数-r进行转换即可：</p>
+<pre><code class="language-shell">$ sudo alien -r pytube0.0.8.1-1all.deb
+$ pytube-0.0.8.1-2.noarch.rpm generated
+</code></pre>
+]]></content>
     </entry>
 </feed>
