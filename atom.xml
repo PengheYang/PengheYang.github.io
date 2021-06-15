@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:4000</id>
+    <id>https://yangpenghe.ml</id>
     <title>杨鹏赫Blog</title>
-    <updated>2021-06-14T13:06:41.262Z</updated>
+    <updated>2021-06-15T02:54:03.352Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://localhost:4000"/>
-    <link rel="self" href="http://localhost:4000/atom.xml"/>
+    <link rel="alternate" href="https://yangpenghe.ml"/>
+    <link rel="self" href="https://yangpenghe.ml/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>http://localhost:4000/images/avatar.png</logo>
-    <icon>http://localhost:4000/favicon.ico</icon>
+    <logo>https://yangpenghe.ml/images/avatar.png</logo>
+    <icon>https://yangpenghe.ml/favicon.ico</icon>
     <rights>All rights reserved 2021, 杨鹏赫Blog</rights>
     <entry>
         <title type="html"><![CDATA[ Windows NT 安装Net3.5环境]]></title>
-        <id>http://localhost:4000/post/windows-nt-an-zhuang-net35-huan-jing/</id>
-        <link href="http://localhost:4000/post/windows-nt-an-zhuang-net35-huan-jing/">
+        <id>https://yangpenghe.ml/post/windows-nt-an-zhuang-net35-huan-jing/</id>
+        <link href="https://yangpenghe.ml/post/windows-nt-an-zhuang-net35-huan-jing/">
         </link>
         <updated>2021-06-12T00:12:43.000Z</updated>
         <summary type="html"><![CDATA[<p>#准备<br>
@@ -28,8 +28,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Windows 10 激活密钥查看]]></title>
-        <id>http://localhost:4000/post/windows-10-ji-huo-mi-yao-cha-kan/</id>
-        <link href="http://localhost:4000/post/windows-10-ji-huo-mi-yao-cha-kan/">
+        <id>https://yangpenghe.ml/post/windows-10-ji-huo-mi-yao-cha-kan/</id>
+        <link href="https://yangpenghe.ml/post/windows-10-ji-huo-mi-yao-cha-kan/">
         </link>
         <updated>2021-06-12T00:12:06.000Z</updated>
         <summary type="html"><![CDATA[<h1 id="使用命令查询-windows-密钥">使用命令查询 Windows 密钥</h1>
@@ -55,8 +55,8 @@ SHA1:	C71D49A6144772F352806201EF564951BE55EDD5<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[Termux]]></title>
-        <id>http://localhost:4000/post/termux/</id>
-        <link href="http://localhost:4000/post/termux/">
+        <id>https://yangpenghe.ml/post/termux/</id>
+        <link href="https://yangpenghe.ml/post/termux/">
         </link>
         <updated>2021-06-12T00:11:39.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="termux">Termux</h2>
@@ -87,8 +87,8 @@ SHA1:	C71D49A6144772F352806201EF564951BE55EDD5<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[Python UnicodeDecodeError错误]]></title>
-        <id>http://localhost:4000/post/python-unicodedecodeerror-cuo-wu/</id>
-        <link href="http://localhost:4000/post/python-unicodedecodeerror-cuo-wu/">
+        <id>https://yangpenghe.ml/post/python-unicodedecodeerror-cuo-wu/</id>
+        <link href="https://yangpenghe.ml/post/python-unicodedecodeerror-cuo-wu/">
         </link>
         <updated>2021-06-12T00:11:18.000Z</updated>
         <summary type="html"><![CDATA[<h3 id="所报错误">所报错误：</h3>
@@ -119,8 +119,8 @@ sys.setdefaultencoding('gb18030')
     </entry>
     <entry>
         <title type="html"><![CDATA[Python字符串编码相关的知识]]></title>
-        <id>http://localhost:4000/post/python-zi-fu-chuan-bian-ma-xiang-guan-de-zhi-shi/</id>
-        <link href="http://localhost:4000/post/python-zi-fu-chuan-bian-ma-xiang-guan-de-zhi-shi/">
+        <id>https://yangpenghe.ml/post/python-zi-fu-chuan-bian-ma-xiang-guan-de-zhi-shi/</id>
+        <link href="https://yangpenghe.ml/post/python-zi-fu-chuan-bian-ma-xiang-guan-de-zhi-shi/">
         </link>
         <updated>2021-06-12T00:10:57.000Z</updated>
         <summary type="html"><![CDATA[<p>开发经常会遇到各种字符串编码的问题，例如报错SyntaxError: Non-ASCII character 'ascii' codec can't encode characters in position 0-2: ordinal not in range(128)，又例如显示乱码。</p>
@@ -373,8 +373,8 @@ s2=s1.encode('unicode_escape').decode(&quot;string_escape&quot;)
     </entry>
     <entry>
         <title type="html"><![CDATA[Python猜拳小游戏的实现!]]></title>
-        <id>http://localhost:4000/post/python-cai-quan-xiao-you-xi-de-shi-xian/</id>
-        <link href="http://localhost:4000/post/python-cai-quan-xiao-you-xi-de-shi-xian/">
+        <id>https://yangpenghe.ml/post/python-cai-quan-xiao-you-xi-de-shi-xian/</id>
+        <link href="https://yangpenghe.ml/post/python-cai-quan-xiao-you-xi-de-shi-xian/">
         </link>
         <updated>2021-06-12T00:10:39.000Z</updated>
         <summary type="html"><![CDATA[<h1 id="构思">构思</h1>
@@ -547,8 +547,8 @@ print(end)
     </entry>
     <entry>
         <title type="html"><![CDATA[Python3 图片隐写术]]></title>
-        <id>http://localhost:4000/post/python3-tu-pian-yin-xie-zhu/</id>
-        <link href="http://localhost:4000/post/python3-tu-pian-yin-xie-zhu/">
+        <id>https://yangpenghe.ml/post/python3-tu-pian-yin-xie-zhu/</id>
+        <link href="https://yangpenghe.ml/post/python3-tu-pian-yin-xie-zhu/">
         </link>
         <updated>2021-06-12T00:10:18.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -745,7 +745,7 @@ fun = lambda x, i: x[i+1:8] + rec(x[8:], i-1)
 <p><code>chr()</code>：接受一个参数，参数为 int 值，返回 Unicode 码点为这个 int 值的字符。</p>
 <h2 id="测试效果">测试效果</h2>
 <p>获取图片<br>
-<img src="http://localhost:4000/post-images/python3-tu-pian-yin-xie-zhu.png" alt="" loading="lazy"></p>
+<img src="https://yangpenghe.ml/post-images/python3-tu-pian-yin-xie-zhu.png" alt="" loading="lazy"></p>
 <p>在我们的代码后添加这两行：</p>
 <pre><code class="language-python">encodeDataInImage(Image.open(&quot;python3-tu-pian-yin-xie-zhu.png&quot;), '你好世界，Hello world!').save('encodeImage.png')
 print(decodeImage(Image.open(&quot;encodeImage.png&quot;)))
@@ -822,8 +822,8 @@ print(decodeImage(Image.open(&quot;encodeImage.png&quot;)))
     </entry>
     <entry>
         <title type="html"><![CDATA[Linux环境jdk安装及配置]]></title>
-        <id>http://localhost:4000/post/linux-huan-jing-jdk-an-zhuang-ji-pei-zhi/</id>
-        <link href="http://localhost:4000/post/linux-huan-jing-jdk-an-zhuang-ji-pei-zhi/">
+        <id>https://yangpenghe.ml/post/linux-huan-jing-jdk-an-zhuang-ji-pei-zhi/</id>
+        <link href="https://yangpenghe.ml/post/linux-huan-jing-jdk-an-zhuang-ji-pei-zhi/">
         </link>
         <updated>2021-06-12T00:10:00.000Z</updated>
         <summary type="html"><![CDATA[<p>Linux下安装jdk，步骤如下：</p>
@@ -847,8 +847,8 @@ export CLASSPATH
     </entry>
     <entry>
         <title type="html"><![CDATA[Linux多个私钥配置]]></title>
-        <id>http://localhost:4000/post/linux-duo-ge-si-yao-pei-zhi/</id>
-        <link href="http://localhost:4000/post/linux-duo-ge-si-yao-pei-zhi/">
+        <id>https://yangpenghe.ml/post/linux-duo-ge-si-yao-pei-zhi/</id>
+        <link href="https://yangpenghe.ml/post/linux-duo-ge-si-yao-pei-zhi/">
         </link>
         <updated>2021-06-12T00:09:41.000Z</updated>
         <summary type="html"><![CDATA[<ol>
@@ -898,8 +898,8 @@ export CLASSPATH
     </entry>
     <entry>
         <title type="html"><![CDATA[ alien：.deb与.rpm包转换工具]]></title>
-        <id>http://localhost:4000/post/aliendeb-yu-rpm-bao-zhuan-huan-gong-ju/</id>
-        <link href="http://localhost:4000/post/aliendeb-yu-rpm-bao-zhuan-huan-gong-ju/">
+        <id>https://yangpenghe.ml/post/aliendeb-yu-rpm-bao-zhuan-huan-gong-ju/</id>
+        <link href="https://yangpenghe.ml/post/aliendeb-yu-rpm-bao-zhuan-huan-gong-ju/">
         </link>
         <updated>2021-06-12T00:09:13.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
